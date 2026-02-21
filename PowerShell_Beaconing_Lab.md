@@ -26,4 +26,5 @@ Here’s what we found in Splunk:
 - Correlation shows that the PowerShell process is controlling repeated network activity. Typical of malware C2.  
 - Port 443 alone is normal, but repeated and automated pattern is suspicious.
   
-- Timeline reconstruction & SOC investigation methodology
+## what was done
+the ip adress was blocked.the infect host was isolated and it was also escalated
