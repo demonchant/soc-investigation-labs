@@ -7,7 +7,6 @@ The activity suggests repeated authentication failures against a user account, p
 
 This lab simulates detection and analysis of brute force login attempts using Windows Security logs in Splunk.
 
----
 
 ## Logs / Evidence
 
@@ -21,7 +20,6 @@ Here’s what was observed:
 | 10:04 | 4625 | admin       | Finance-PC | 192.168.1.100 |
 | 10:05 | 4625 | admin       | Finance-PC | 192.168.1.100 |
 
----
 
 ## Detection Queries
 
@@ -43,21 +41,24 @@ index=lab_logs EventID=4625
 | stats dc(Account_Name) as unique_accounts by SourceIp
 | where unique_accounts > 3
 
-Analysis
+## Analysis
 
 Multiple failed login attempts were observed against the admin account.
 All attempts originated from the same IP address 192.168.1.100.
 The login failures occurred within a short time window.
-Pattern Observed:
+
+## Pattern Observed:
 Same account
 Same source IP
 Rapid repeated attempts
-Conclusion:
+## Conclusion:
 This behavior is consistent with a brute force attack, where an attacker is attempting to guess the password of a specific account.
-Additional Insight:
+
+
+## Additional Insight:
 If multiple accounts were targeted instead, this would indicate password spraying.
 
-What Was Done
+## What Was Done
 
 Source IP 192.168.1.100 was blocked
 Targeted account (admin) was locked and password reset
