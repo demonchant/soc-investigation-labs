@@ -28,14 +28,14 @@ Here’s what was observed:
 ```spl
 index=lab_logs EventID=4625
 
-Detect Brute Force (Repeated Attempts)
+### Detect Brute Force (Repeated Attempts)
 
 index=lab_logs EventID=4625
 | stats count min(_time) as firstSeen max(_time) as lastSeen by Account_Name SourceIp
 | eval duration = lastSeen - firstSeen
 | where count >= 5 AND duration <= 300
 
-Detect Multiple Accounts Targeted (Password Spraying)
+### Detect Multiple Accounts Targeted (Password Spraying)
 
 index=lab_logs EventID=4625
 | stats dc(Account_Name) as unique_accounts by SourceIp
@@ -47,15 +47,18 @@ Multiple failed login attempts were observed against the admin account.
 All attempts originated from the same IP address 192.168.1.100.
 The login failures occurred within a short time window.
 
-## Pattern Observed:
+### Pattern Observed:
+
 Same account
 Same source IP
 Rapid repeated attempts
-## Conclusion:
+
+### Conclusion:
+
 This behavior is consistent with a brute force attack, where an attacker is attempting to guess the password of a specific account.
 
 
-## Additional Insight:
+### Additional Insight:
 If multiple accounts were targeted instead, this would indicate password spraying.
 
 ## What Was Done
