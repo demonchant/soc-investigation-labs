@@ -7,7 +7,6 @@ Further investigation revealed the creation of a scheduled task designed to main
 
 This lab simulates detection of persistence mechanisms using Windows logs in Splunk.
 
----
 
 ## Logs / Evidence
 
@@ -20,7 +19,6 @@ Here’s what was observed:
 | 14:13 | 4698 | Finance-PC  | powershell.exe | UpdateServiceTask     |
 | 14:20 | 4688 | Finance-PC  | powershell.exe | -                     |
 
----
 
 ## Detection Queries
 
@@ -47,15 +45,18 @@ Initial PowerShell execution was observed on Finance-PC.
 Shortly after, a scheduled task named UpdateServiceTask was created.
 
 ### Key Observations:
+
 Task created using PowerShell
 Repeated creation of same task
 Task name appears legitimate but is suspicious in context
 
 ### Pattern Observed:
+
 Execution → Persistence
 Task ensures malware runs again even after reboot
 
 ## Conclusion:
+
 This behavior indicates persistence via scheduled tasks.
 The attacker has established a mechanism to maintain access to the system.
 What Was Done
