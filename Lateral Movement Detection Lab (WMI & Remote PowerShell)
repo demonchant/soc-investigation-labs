@@ -29,30 +29,43 @@ index=lab_logs EventID=4688 ProcessName="powershell.exe"
 | search ParentProcessName IN ("wmiprvse.exe","psexec.exe","services.exe")
 | table _time Host ParentProcessName ProcessName Account_Name CommandLine
 
-Detect Lateral Movement Across Hosts
+### Detect Lateral Movement Across Hosts
+
 index=lab_logs EventID=4688 ProcessName="powershell.exe"
 | search ParentProcessName="wmiprvse.exe"
 | stats count by Host DestinationIp
-Detect Multiple Hosts Executing Same Behavior
+
+### Detect Multiple Hosts Executing Same Behavior
+
 index=lab_logs EventID=4688 ProcessName="powershell.exe"
 | search ParentProcessName="wmiprvse.exe"
 | stats dc(Host) as affected_hosts by DestinationIp
 | where affected_hosts > 1
-Analysis
+
+## Analysis
+
 PowerShell execution was observed on multiple hosts (Finance-PC, HR-PC).
 The parent process for execution was wmiprvse.exe, a Windows service used for remote management.
-Key Observations:
+
+### Key Observations:
+
 No direct user interaction (not launched by Word, Outlook, or Explorer)
 Execution initiated by system process
 Activity observed across multiple hosts
-Pattern Observed:
+
+### Pattern Observed:
+
 Same execution method
 Multiple systems affected
 Internal IP communication
-Conclusion:
+
+## Conclusion:
+
 This behavior is consistent with lateral movement using WMI (Windows Management Instrumentation).
 An attacker likely used remote execution to move between systems after initial compromise.
-What Was Done
+
+## What Was Done
+
 Affected hosts (Finance-PC, HR-PC) were isolated
 Suspicious administrative activity was investigated
 Compromised credentials were reset
