@@ -1,0 +1,25 @@
+- name: brute_force_attempt
+  description: "Detect multiple failed login attempts from the same source IP (T1110)"
+  threshold: 5
+  time_window: 60
+  severity: high
+  mitre: T1110
+
+- name: suspicious_process
+  description: "Detect known attacker tooling or scripting interpreter abuse (T1059)"
+  threshold: 1
+  severity: medium
+  mitre: T1059
+  processes:
+    - powershell.exe
+    - cmd.exe
+    - wscript.exe
+    - mshta.exe
+    - regsvr32.exe
+    - certutil.exe
+
+- name: lateral_movement
+  description: "Detect single IP authenticating to multiple hosts (T1021)"
+  threshold: 3
+  severity: high
+  mitre: T1021

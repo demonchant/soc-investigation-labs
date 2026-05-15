@@ -1,0 +1,12 @@
+[
+    {"timestamp": "2026-05-06T10:01:00", "host": "server1", "user": "admin", "event_type": "login_failed", "source_ip": "192.168.1.10", "process": "ssh", "action": "login"},
+    {"timestamp": "2026-05-06T10:01:10", "host": "server1", "user": "admin", "event_type": "login_failed", "source_ip": "192.168.1.10", "process": "ssh", "action": "login"},
+    {"timestamp": "2026-05-06T10:01:20", "host": "server1", "user": "admin", "event_type": "login_failed", "source_ip": "192.168.1.10", "process": "ssh", "action": "login"},
+    {"timestamp": "2026-05-06T10:01:30", "host": "server1", "user": "admin", "event_type": "login_failed", "source_ip": "192.168.1.10", "process": "ssh", "action": "login"},
+    {"timestamp": "2026-05-06T10:01:40", "host": "server1", "user": "admin", "event_type": "login_failed", "source_ip": "192.168.1.10", "process": "ssh", "action": "login"},
+    {"timestamp": "2026-05-06T10:02:00", "host": "server2", "user": "john", "event_type": "login_success", "source_ip": "10.0.0.5", "process": "powershell.exe", "action": "exec"},
+    {"timestamp": "2026-05-06T10:02:05", "host": "server3", "user": "john", "event_type": "login_success", "source_ip": "10.0.0.5", "process": "ssh", "action": "login"},
+    {"timestamp": "2026-05-06T10:02:10", "host": "server4", "user": "john", "event_type": "login_success", "source_ip": "10.0.0.5", "process": "ssh", "action": "login"},
+    {"timestamp": "2026-05-06T10:02:15", "host": "server5", "user": "john", "event_type": "login_success", "source_ip": "10.0.0.5", "process": "ssh", "action": "login"},
+    {"timestamp": "2026-05-06T10:03:00", "host": "workstation1", "user": "alice", "event_type": "process_exec", "source_ip": "172.16.0.20", "process": "certutil.exe", "action": "exec"}
+]
