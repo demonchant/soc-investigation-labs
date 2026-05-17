@@ -1,0 +1,14 @@
+[
+    {"timestamp": "2026-05-06T10:00:01", "source_ip": "192.168.1.10", "event_type": "login_failed", "user": "admin", "host": "dc01"},
+    {"timestamp": "2026-05-06T10:00:02", "source_ip": "192.168.1.10", "event_type": "login_failed", "user": "admin", "host": "dc01"},
+    {"timestamp": "2026-05-06T10:00:03", "source_ip": "192.168.1.10", "event_type": "login_failed", "user": "admin", "host": "dc01"},
+    {"timestamp": "2026-05-06T10:00:04", "source_ip": "192.168.1.10", "event_type": "login_failed", "user": "admin", "host": "dc01"},
+    {"timestamp": "2026-05-06T10:00:05", "source_ip": "192.168.1.10", "event_type": "login_failed", "user": "admin", "host": "dc01"},
+    {"timestamp": "2026-05-06T10:00:10", "source_ip": "192.168.1.10", "event_type": "login_success", "user": "admin", "host": "dc01"},
+    {"timestamp": "2026-05-06T10:01:00", "source_ip": "10.0.0.55", "event_type": "login_success", "user": "jsmith", "host": "srv01"},
+    {"timestamp": "2026-05-06T10:01:05", "source_ip": "10.0.0.55", "event_type": "login_success", "user": "jsmith", "host": "srv02"},
+    {"timestamp": "2026-05-06T10:01:10", "source_ip": "10.0.0.55", "event_type": "login_success", "user": "jsmith", "host": "srv03"},
+    {"timestamp": "2026-05-06T10:01:15", "source_ip": "10.0.0.55", "event_type": "login_success", "user": "jsmith", "host": "srv04"},
+    {"timestamp": "2026-05-06T10:02:00", "source_ip": "172.16.5.20", "event_type": "process_exec", "user": "alice", "host": "ws01", "process": "certutil.exe"},
+    {"timestamp": "2026-05-06T10:02:05", "source_ip": "172.16.5.21", "event_type": "process_exec", "user": "bob", "host": "ws02", "process": "mshta.exe"}
+]

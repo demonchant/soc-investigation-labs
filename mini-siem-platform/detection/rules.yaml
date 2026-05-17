@@ -1,0 +1,33 @@
+brute_force:
+  description: "Multiple failed login attempts from same IP (T1110)"
+  event_type: login_failed
+  threshold: 5
+  severity: high
+  mitre: T1110
+
+suspicious_login_success:
+  description: "Successful login after multiple failures — possible credential stuffing (T1110.003)"
+  event_type: login_success
+  linked_event: login_failed
+  threshold: 3
+  severity: medium
+  mitre: T1110.003
+
+process_anomaly:
+  description: "Execution of known attacker tooling (T1059)"
+  event_type: process_exec
+  severity: high
+  mitre: T1059
+  suspicious_processes:
+    - powershell.exe
+    - cmd.exe
+    - certutil.exe
+    - mshta.exe
+    - wscript.exe
+
+multi_host_auth:
+  description: "Single user authenticating to multiple hosts rapidly (T1021)"
+  event_type: login_success
+  threshold: 3
+  severity: high
+  mitre: T1021
