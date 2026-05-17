@@ -1,0 +1,66 @@
+[
+    {
+        "event_time": "2026-05-06T10:00:01",
+        "event_name": "ConsoleLogin",
+        "user": "root",
+        "user_type": "root",
+        "source_ip": "102.89.12.5",
+        "region": "RU",
+        "status": "success",
+        "mfa_used": false
+    },
+    {
+        "event_time": "2026-05-06T10:01:10",
+        "event_name": "CreateAccessKey",
+        "user": "admin",
+        "user_type": "IAMUser",
+        "source_ip": "154.23.11.9",
+        "region": "US",
+        "status": "success",
+        "target_resource": "arn:aws:iam::123456789012:user/admin",
+        "mfa_used": true
+    },
+    {
+        "event_time": "2026-05-06T10:02:20",
+        "event_name": "AttachUserPolicy",
+        "user": "developer",
+        "user_type": "IAMUser",
+        "source_ip": "102.89.12.5",
+        "region": "CN",
+        "status": "success",
+        "target_resource": "arn:aws:iam::aws:policy/AdministratorAccess",
+        "mfa_used": false
+    },
+    {
+        "event_time": "2026-05-06T10:03:00",
+        "event_name": "CreateUser",
+        "user": "admin",
+        "user_type": "IAMUser",
+        "source_ip": "154.23.11.9",
+        "region": "US",
+        "status": "success",
+        "target_resource": "arn:aws:iam::123456789012:user/svc-deploy",
+        "mfa_used": true
+    },
+    {
+        "event_time": "2026-05-06T10:04:00",
+        "event_name": "ConsoleLogin",
+        "user": "alice",
+        "user_type": "IAMUser",
+        "source_ip": "185.220.101.12",
+        "region": "KP",
+        "status": "failure",
+        "mfa_used": false
+    },
+    {
+        "event_time": "2026-05-06T10:05:00",
+        "event_name": "AuthorizeSecurityGroupIngress",
+        "user": "devops",
+        "user_type": "IAMUser",
+        "source_ip": "10.0.0.5",
+        "region": "US",
+        "status": "success",
+        "target_resource": "sg-0abc1234def56789",
+        "mfa_used": true
+    }
+]

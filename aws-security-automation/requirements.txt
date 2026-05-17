@@ -1,0 +1,2 @@
+# No external dependencies required
+# boto3>=1.34.0  # Uncomment for real AWS CloudTrail/CloudWatch integration
