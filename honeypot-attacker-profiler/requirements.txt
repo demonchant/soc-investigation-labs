@@ -1,0 +1,3 @@
+# stdlib only — no external dependencies required
+# Optional: geoip2>=4.7.0  # for live GeoIP resolution
+# Optional: python-misp>=2.4.0  # for MISP IOC export
