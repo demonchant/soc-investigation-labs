@@ -1,0 +1,214 @@
+[
+  {
+    "timestamp": "2026-05-06T09:00:00",
+    "event_type": "login",
+    "user_id": "U1001",
+    "ip": "102.89.12.5",
+    "country": "NG",
+    "device_fingerprint": "fp_abc123",
+    "mfa_used": true,
+    "status": "success"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:05",
+    "event_type": "login",
+    "user_id": "U1001",
+    "ip": "185.220.101.47",
+    "country": "RU",
+    "device_fingerprint": "fp_xyz999",
+    "mfa_used": false,
+    "status": "success"
+  },
+  {
+    "timestamp": "2026-05-06T09:01:00",
+    "event_type": "withdrawal",
+    "user_id": "U1001",
+    "amount_usd": 48500,
+    "asset": "BTC",
+    "destination_address": "1FfmbHfnpaZjKFvyi1okTjJJusN455paPH",
+    "ip": "185.220.101.47",
+    "country": "RU",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2026-05-06T09:01:10",
+    "event_type": "api_key_created",
+    "user_id": "U1001",
+    "ip": "185.220.101.47",
+    "country": "RU",
+    "permissions": [
+      "withdraw",
+      "trade",
+      "read"
+    ],
+    "status": "success"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:00",
+    "event_type": "trade",
+    "user_id": "U2002",
+    "pair": "BTC/USDT",
+    "side": "buy",
+    "amount_usd": 5000,
+    "price": 62000,
+    "ip": "10.0.0.1",
+    "country": "US"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:01",
+    "event_type": "trade",
+    "user_id": "U2003",
+    "pair": "BTC/USDT",
+    "side": "sell",
+    "amount_usd": 5000,
+    "price": 62000,
+    "ip": "10.0.0.2",
+    "country": "US"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:02",
+    "event_type": "trade",
+    "user_id": "U2002",
+    "pair": "BTC/USDT",
+    "side": "buy",
+    "amount_usd": 4950,
+    "price": 62000,
+    "ip": "10.0.0.1",
+    "country": "US"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:03",
+    "event_type": "trade",
+    "user_id": "U2003",
+    "pair": "BTC/USDT",
+    "side": "sell",
+    "amount_usd": 4950,
+    "price": 62000,
+    "ip": "10.0.0.2",
+    "country": "US"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:04",
+    "event_type": "trade",
+    "user_id": "U2002",
+    "pair": "BTC/USDT",
+    "side": "buy",
+    "amount_usd": 5100,
+    "price": 62000,
+    "ip": "10.0.0.1",
+    "country": "US"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:05",
+    "event_type": "trade",
+    "user_id": "U2003",
+    "pair": "BTC/USDT",
+    "side": "sell",
+    "amount_usd": 5100,
+    "price": 62000,
+    "ip": "10.0.0.2",
+    "country": "US"
+  },
+  {
+    "timestamp": "2026-05-06T09:03:00",
+    "event_type": "api_request",
+    "user_id": "U3003",
+    "api_key": "key_aaa",
+    "endpoint": "/api/v1/order",
+    "ip": "203.0.113.5",
+    "requests_per_min": 480,
+    "country": "CN"
+  },
+  {
+    "timestamp": "2026-05-06T09:04:00",
+    "event_type": "login",
+    "user_id": "U4004",
+    "ip": "192.168.1.1",
+    "country": "US",
+    "device_fingerprint": "fp_dev1",
+    "mfa_used": false,
+    "status": "failed"
+  },
+  {
+    "timestamp": "2026-05-06T09:04:01",
+    "event_type": "login",
+    "user_id": "U4004",
+    "ip": "192.168.1.1",
+    "country": "US",
+    "device_fingerprint": "fp_dev1",
+    "mfa_used": false,
+    "status": "failed"
+  },
+  {
+    "timestamp": "2026-05-06T09:04:02",
+    "event_type": "login",
+    "user_id": "U4004",
+    "ip": "192.168.1.1",
+    "country": "US",
+    "device_fingerprint": "fp_dev1",
+    "mfa_used": false,
+    "status": "failed"
+  },
+  {
+    "timestamp": "2026-05-06T09:04:03",
+    "event_type": "login",
+    "user_id": "U4004",
+    "ip": "192.168.1.1",
+    "country": "US",
+    "device_fingerprint": "fp_dev1",
+    "mfa_used": false,
+    "status": "failed"
+  },
+  {
+    "timestamp": "2026-05-06T09:04:04",
+    "event_type": "login",
+    "user_id": "U4004",
+    "ip": "192.168.1.1",
+    "country": "US",
+    "device_fingerprint": "fp_dev1",
+    "mfa_used": false,
+    "status": "failed"
+  },
+  {
+    "timestamp": "2026-05-06T09:05:00",
+    "event_type": "withdrawal",
+    "user_id": "U5005",
+    "amount_usd": 9800,
+    "asset": "USDT",
+    "destination_address": "0xdead001",
+    "ip": "10.0.0.5",
+    "country": "US",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2026-05-06T09:05:30",
+    "event_type": "withdrawal",
+    "user_id": "U5005",
+    "amount_usd": 9700,
+    "asset": "USDT",
+    "destination_address": "0xdead002",
+    "ip": "10.0.0.5",
+    "country": "US",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2026-05-06T09:06:00",
+    "event_type": "withdrawal",
+    "user_id": "U5005",
+    "amount_usd": 9500,
+    "asset": "USDT",
+    "destination_address": "0xdead003",
+    "ip": "10.0.0.5",
+    "country": "US",
+    "status": "pending"
+  },
+  {
+    "timestamp": "2026-05-06T09:07:00",
+    "event_type": "kyc_bypass_attempt",
+    "user_id": "U6006",
+    "method": "document_reuse",
+    "ip": "77.88.55.60",
+    "country": "BY",
+    "status": "flagged"
+  }
+]

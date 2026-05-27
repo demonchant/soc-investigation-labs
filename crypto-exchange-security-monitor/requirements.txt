@@ -1,0 +1,3 @@
+# stdlib only — no external dependencies required
+# Optional: requests>=2.31.0   # for Chainalysis/Elliptic blockchain intel lookups
+# Optional: kafka-python>=2.0  # for real-time Kafka stream ingestion
