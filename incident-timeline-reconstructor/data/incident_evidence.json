@@ -1,0 +1,152 @@
+[
+  {
+    "timestamp": "2026-05-06T08:55:00",
+    "source": "DNS",
+    "event_type": "recon",
+    "host": "ATTACKER",
+    "detail": "DNS queries to admin.company.com, vpn.company.com \u2014 internal recon",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1595.002",
+    "phase": "Reconnaissance"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:01",
+    "source": "Windows Security",
+    "event_type": "brute_force",
+    "host": "DC-01",
+    "detail": "47 failed Kerberos pre-auth attempts against 'administrator' over 5 minutes",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1110.003",
+    "phase": "Initial Access"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:10",
+    "source": "Windows Security",
+    "event_type": "logon_success",
+    "host": "DC-01",
+    "detail": "Successful NTLM logon to DC-01 as 'administrator' from 10.0.1.5",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1078",
+    "phase": "Initial Access"
+  },
+  {
+    "timestamp": "2026-05-06T09:01:00",
+    "source": "Sysmon",
+    "event_type": "process_create",
+    "host": "DC-01",
+    "detail": "powershell.exe -EncodedCommand [base64] spawned by winlogon.exe",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1059.001",
+    "phase": "Execution"
+  },
+  {
+    "timestamp": "2026-05-06T09:01:05",
+    "source": "Sysmon",
+    "event_type": "network_connect",
+    "host": "DC-01",
+    "detail": "PowerShell connected to 185.220.101.47:4444 (known C2 infrastructure)",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1071",
+    "phase": "Command & Control"
+  },
+  {
+    "timestamp": "2026-05-06T09:01:10",
+    "source": "Proxy",
+    "event_type": "download",
+    "host": "DC-01",
+    "detail": "Downloaded beacon.exe (245KB) from http://185.220.101.47/tools/",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1105",
+    "phase": "Command & Control"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:00",
+    "source": "Sysmon",
+    "event_type": "registry_set",
+    "host": "DC-01",
+    "detail": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\svchost32 \u2192 C:\\Windows\\Temp\\beacon.exe",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1547.001",
+    "phase": "Persistence"
+  },
+  {
+    "timestamp": "2026-05-06T09:05:00",
+    "source": "Windows Security",
+    "event_type": "dcsync",
+    "host": "DC-01",
+    "detail": "svc_backup requested DS-Replication-Get-Changes from DC-01 (EventID 4662)",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1003.006",
+    "phase": "Credential Access"
+  },
+  {
+    "timestamp": "2026-05-06T09:10:00",
+    "source": "Windows Security",
+    "event_type": "lateral_movement",
+    "host": "FILESERVER-01",
+    "detail": "NTLM pass-the-hash to FILESERVER-01, WKSTN-10, WKSTN-11 using stolen administrator hash",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1550.002",
+    "phase": "Lateral Movement"
+  },
+  {
+    "timestamp": "2026-05-06T09:15:00",
+    "source": "Windows Security",
+    "event_type": "discovery",
+    "host": "FILESERVER-01",
+    "detail": "net user /domain, net group 'Domain Admins' /domain \u2014 AD enumeration",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1087.002",
+    "phase": "Discovery"
+  },
+  {
+    "timestamp": "2026-05-06T09:20:00",
+    "source": "Windows Security",
+    "event_type": "privilege_escalation",
+    "host": "DC-01",
+    "detail": "jsmith added to Domain Admins group by svc_backup (EventID 4728)",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1098",
+    "phase": "Privilege Escalation"
+  },
+  {
+    "timestamp": "2026-05-06T09:25:00",
+    "source": "Sysmon",
+    "event_type": "file_access",
+    "host": "FILESERVER-01",
+    "detail": "Bulk read of \\\\FILESERVER-01\\HR_Confidential \u2014 2,847 files accessed over 5 minutes",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1005",
+    "phase": "Collection"
+  },
+  {
+    "timestamp": "2026-05-06T09:30:00",
+    "source": "Firewall",
+    "event_type": "exfiltration",
+    "host": "DC-01",
+    "detail": "8.5MB outbound transfer to 185.220.101.47:443 over HTTPS \u2014 likely staged data",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1048",
+    "phase": "Exfiltration"
+  },
+  {
+    "timestamp": "2026-05-06T09:35:00",
+    "source": "Sysmon",
+    "event_type": "ransomware_prep",
+    "host": "DC-01",
+    "detail": "vssadmin delete shadows /all /quiet \u2014 all VSS shadow copies deleted",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1490",
+    "phase": "Impact"
+  },
+  {
+    "timestamp": "2026-05-06T09:36:00",
+    "source": "Windows Security",
+    "event_type": "ransomware_prep",
+    "host": "DC-01",
+    "detail": "bcdedit /set {default} recoveryenabled No \u2014 recovery disabled",
+    "src_ip": "10.0.1.5",
+    "mitre": "T1490",
+    "phase": "Impact"
+  }
+]
