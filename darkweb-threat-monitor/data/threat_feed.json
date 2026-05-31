@@ -1,0 +1,145 @@
+[
+  {
+    "id": "TI-001",
+    "feed": "darkweb_forum_scrape",
+    "type": "credential_leak",
+    "source": "BreachForums",
+    "timestamp": "2026-05-05T23:00:00",
+    "title": "company.com employee credentials leaked",
+    "description": "Thread offering 1,200 employee email/password combos from company.com. Sample credentials included.",
+    "affected_domain": "company.com",
+    "data_types": [
+      "email",
+      "password",
+      "employee_name"
+    ],
+    "threat_actor": "unknown",
+    "confidence": "high",
+    "severity": "critical"
+  },
+  {
+    "id": "TI-002",
+    "feed": "paste_monitor",
+    "type": "source_code_leak",
+    "source": "Pastebin",
+    "timestamp": "2026-05-06T01:30:00",
+    "title": "AWS API keys found in public paste",
+    "description": "AWS access key and secret key found in public paste titled company-deploy-config. S3 bucket names exposed.",
+    "affected_domain": "company.com",
+    "data_types": [
+      "aws_api_key",
+      "s3_bucket",
+      "deploy_config"
+    ],
+    "threat_actor": "unknown",
+    "confidence": "high",
+    "severity": "critical"
+  },
+  {
+    "id": "TI-003",
+    "feed": "ransomware_tracker",
+    "type": "ransomware_mention",
+    "source": "LockBit 3.0 leak site",
+    "timestamp": "2026-05-06T06:00:00",
+    "title": "company.com listed on ransomware leak site",
+    "description": "Company added to victim list. Claims 150GB exfiltrated. 72-hour ransom deadline posted.",
+    "affected_domain": "company.com",
+    "data_types": [
+      "financial_records",
+      "hr_data",
+      "customer_pii"
+    ],
+    "threat_actor": "LockBit 3.0",
+    "confidence": "confirmed",
+    "severity": "critical"
+  },
+  {
+    "id": "TI-004",
+    "feed": "vulnerability_intel",
+    "type": "ioc_match",
+    "source": "AlienVault OTX",
+    "timestamp": "2026-05-06T04:00:00",
+    "title": "Known malicious C2 IP observed in company network",
+    "description": "IP 185.220.101.47 confirmed as known C2 infrastructure. Same IP observed in company firewall logs.",
+    "affected_domain": "company.com",
+    "data_types": [
+      "c2_ip",
+      "malware_hash"
+    ],
+    "threat_actor": "LockBit 3.0",
+    "confidence": "confirmed",
+    "severity": "critical",
+    "ioc": "185.220.101.47"
+  },
+  {
+    "id": "TI-005",
+    "feed": "darkweb_forum_scrape",
+    "type": "access_sale",
+    "source": "XSS Forum",
+    "timestamp": "2026-05-04T14:00:00",
+    "title": "VPN/RDP access to financial company listed for sale",
+    "description": "Threat actor selling VPN access to an unnamed financial company matching target profile. Asking $3,500 USD.",
+    "affected_domain": "unknown",
+    "data_types": [
+      "vpn_credentials",
+      "rdp_access"
+    ],
+    "threat_actor": "h4x0r_pro",
+    "confidence": "medium",
+    "severity": "high"
+  },
+  {
+    "id": "TI-006",
+    "feed": "cert_transparency",
+    "type": "phishing_infrastructure",
+    "source": "Certificate Transparency Log",
+    "timestamp": "2026-05-06T07:00:00",
+    "title": "Typosquat domain registered targeting company.com",
+    "description": "New SSL certificate issued for cornpany.com and login.cornpany.com \u2014 likely phishing infrastructure.",
+    "affected_domain": "company.com",
+    "data_types": [
+      "phishing_domain",
+      "ssl_cert"
+    ],
+    "threat_actor": "unknown",
+    "confidence": "high",
+    "severity": "high",
+    "ioc": "cornpany.com"
+  },
+  {
+    "id": "TI-007",
+    "feed": "paste_monitor",
+    "type": "pii_exposure",
+    "source": "Pastebin",
+    "timestamp": "2026-05-05T18:00:00",
+    "title": "Customer PII dump \u2014 4,500 records",
+    "description": "Email addresses, phone numbers, and partial card data for 4,500 customers in a format matching company CRM exports.",
+    "affected_domain": "company.com",
+    "data_types": [
+      "customer_email",
+      "phone",
+      "partial_card_data"
+    ],
+    "threat_actor": "unknown",
+    "confidence": "medium",
+    "severity": "critical"
+  },
+  {
+    "id": "TI-008",
+    "feed": "vulnerability_intel",
+    "type": "exploit_available",
+    "source": "ExploitDB",
+    "timestamp": "2026-05-06T08:00:00",
+    "title": "Public PoC exploit released for CVE-2024-3400",
+    "description": "Exploit PoC for PAN-OS GlobalProtect now public. Company firewall confirmed unpatched on vulnerable version.",
+    "affected_domain": "company.com",
+    "data_types": [
+      "exploit_code",
+      "affected_version"
+    ],
+    "threat_actor": "public",
+    "confidence": "confirmed",
+    "severity": "critical",
+    "ioc": "CVE-2024-3400"
+  }
+]
