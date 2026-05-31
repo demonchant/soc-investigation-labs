@@ -1,0 +1,166 @@
+[
+  {
+    "timestamp": "2026-05-06T09:00:01",
+    "event_id": 4769,
+    "event_type": "kerberos_service_ticket",
+    "host": "DC-01",
+    "user": "jsmith",
+    "target_service": "MSSQLSvc/sqlserver.company.com",
+    "ticket_encryption": "0x17",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x0"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:02",
+    "event_id": 4769,
+    "event_type": "kerberos_service_ticket",
+    "host": "DC-01",
+    "user": "jsmith",
+    "target_service": "HTTP/webapp.company.com",
+    "ticket_encryption": "0x17",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x0"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:03",
+    "event_id": 4769,
+    "event_type": "kerberos_service_ticket",
+    "host": "DC-01",
+    "user": "jsmith",
+    "target_service": "CIFS/fileserver.company.com",
+    "ticket_encryption": "0x17",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x0"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:04",
+    "event_id": 4769,
+    "event_type": "kerberos_service_ticket",
+    "host": "DC-01",
+    "user": "jsmith",
+    "target_service": "LDAP/dc01.company.com",
+    "ticket_encryption": "0x17",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x0"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:05",
+    "event_id": 4769,
+    "event_type": "kerberos_service_ticket",
+    "host": "DC-01",
+    "user": "jsmith",
+    "target_service": "HOST/exchange.company.com",
+    "ticket_encryption": "0x17",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x0"
+  },
+  {
+    "timestamp": "2026-05-06T09:05:00",
+    "event_id": 4662,
+    "event_type": "directory_service_access",
+    "host": "DC-01",
+    "user": "svc_backup",
+    "src_ip": "10.0.1.20",
+    "object_type": "domainDNS",
+    "access_mask": "0x100",
+    "properties": [
+      "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2",
+      "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+      "89e95b76-444d-4c62-991a-0facbeda640c"
+    ]
+  },
+  {
+    "timestamp": "2026-05-06T09:10:00",
+    "event_id": 4768,
+    "event_type": "kerberos_auth_ticket",
+    "host": "DC-01",
+    "user": "svc_legacyapp",
+    "src_ip": "10.0.1.25",
+    "pre_auth_type": "0",
+    "failure_code": "0x0"
+  },
+  {
+    "timestamp": "2026-05-06T09:15:00",
+    "event_id": 4624,
+    "event_type": "logon_success",
+    "host": "DC-01",
+    "user": "administrator",
+    "src_ip": "10.0.1.20",
+    "logon_type": 3,
+    "ticket_lifetime_hours": 10000,
+    "domain": "COMPANY"
+  },
+  {
+    "timestamp": "2026-05-06T09:20:00",
+    "event_id": 4728,
+    "event_type": "group_member_added",
+    "host": "DC-01",
+    "user": "svc_backup",
+    "target_user": "jsmith",
+    "group": "Domain Admins",
+    "src_ip": "10.0.1.20"
+  },
+  {
+    "timestamp": "2026-05-06T09:25:01",
+    "event_id": 4771,
+    "event_type": "kerberos_preauth_fail",
+    "host": "DC-01",
+    "user": "alice",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x18"
+  },
+  {
+    "timestamp": "2026-05-06T09:25:02",
+    "event_id": 4771,
+    "event_type": "kerberos_preauth_fail",
+    "host": "DC-01",
+    "user": "bob",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x18"
+  },
+  {
+    "timestamp": "2026-05-06T09:25:03",
+    "event_id": 4771,
+    "event_type": "kerberos_preauth_fail",
+    "host": "DC-01",
+    "user": "charlie",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x18"
+  },
+  {
+    "timestamp": "2026-05-06T09:25:04",
+    "event_id": 4771,
+    "event_type": "kerberos_preauth_fail",
+    "host": "DC-01",
+    "user": "dave",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x18"
+  },
+  {
+    "timestamp": "2026-05-06T09:25:05",
+    "event_id": 4771,
+    "event_type": "kerberos_preauth_fail",
+    "host": "DC-01",
+    "user": "eve",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x18"
+  },
+  {
+    "timestamp": "2026-05-06T09:25:06",
+    "event_id": 4771,
+    "event_type": "kerberos_preauth_fail",
+    "host": "DC-01",
+    "user": "frank",
+    "src_ip": "10.0.1.20",
+    "failure_code": "0x18"
+  },
+  {
+    "timestamp": "2026-05-06T09:30:00",
+    "event_id": 4720,
+    "event_type": "user_account_created",
+    "host": "DC-01",
+    "user": "svc_backup",
+    "new_account": "backdoor_admin",
+    "src_ip": "10.0.1.20"
+  }
+]
