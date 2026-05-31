@@ -1,0 +1,2 @@
+# stdlib only
+# Optional: splunk-sdk>=1.7.4  # to push rules live to Splunk instance

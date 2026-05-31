@@ -1,0 +1,144 @@
+[
+  {
+    "id": "SPL-001",
+    "name": "Brute Force Login Detection",
+    "mitre": "T1110",
+    "severity": "high",
+    "description": "Detects multiple failed authentication attempts from a single source IP within a time window.",
+    "log_source": "Windows Security Event Log",
+    "event_ids": [
+      "4625"
+    ],
+    "spl": "index=windows EventCode=4625\n| bucket _time span=5m\n| stats count AS failed_attempts, values(Account_Name) AS accounts\n    BY _time, Source_Network_Address\n| where failed_attempts >= 10\n| eval severity=\"HIGH\", mitre_technique=\"T1110 - Brute Force\"\n| table _time, Source_Network_Address, failed_attempts, accounts, severity, mitre_technique\n| sort -failed_attempts",
+    "tuning_notes": "Adjust threshold (10) based on environment baseline. Whitelist service accounts if needed.",
+    "response": "Block source IP at perimeter. Investigate whether any attempt succeeded (cross-reference EventCode=4624)."
+  },
+  {
+    "id": "SPL-002",
+    "name": "PowerShell Encoded Command Execution",
+    "mitre": "T1059.001",
+    "severity": "critical",
+    "description": "Detects PowerShell invoked with -EncodedCommand or -Enc flags, commonly used to obfuscate malicious payloads.",
+    "log_source": "Sysmon Event ID 1 / Windows Security 4688",
+    "event_ids": [
+      "1",
+      "4688"
+    ],
+    "spl": "index=sysmon EventCode=1 Image=\"*powershell.exe\"\n| where match(CommandLine, \"-(?i)(enc|encodedcommand)\\s+[A-Za-z0-9+/=]{20,}\")\n| eval decoded_hint=if(match(CommandLine,\"IEX|Invoke-Expression\"),\"Likely download cradle\",\"Unknown payload\")\n| stats count BY Computer, User, CommandLine, ParentImage, decoded_hint\n| eval severity=\"CRITICAL\", mitre_technique=\"T1059.001 - PowerShell Encoded Command\"\n| sort -count\n| table Computer, User, ParentImage, CommandLine, decoded_hint, severity, mitre_technique",
+    "tuning_notes": "Whitelist known admin scripts that legitimately use encoded commands. Validate base64 length threshold.",
+    "response": "Isolate host immediately. Decode base64 payload. Check for download cradles or reflective loading."
+  },
+  {
+    "id": "SPL-003",
+    "name": "Credential Dumping \u2014 LSASS Access",
+    "mitre": "T1003.001",
+    "severity": "critical",
+    "description": "Detects access to lsass.exe process memory, indicative of credential dumping tools (Mimikatz, procdump).",
+    "log_source": "Sysmon Event ID 10 (Process Access)",
+    "event_ids": [
+      "10"
+    ],
+    "spl": "index=sysmon EventCode=10 TargetImage=\"*lsass.exe\"\n| where GrantedAccess IN (\"0x1010\", \"0x1410\", \"0x147a\", \"0x143a\", \"0x1fffff\")\n| stats count BY Computer, SourceImage, SourceUser, GrantedAccess, TargetImage\n| eval risk=case(\n    match(SourceImage,\"mimikatz|procdump|wce|fgdump\"),\"CONFIRMED_TOOL\",\n    match(SourceImage,\"taskmgr|msmpeng\"),\"LIKELY_BENIGN\",\n    true(),\"SUSPICIOUS_UNKNOWN\")\n| where risk != \"LIKELY_BENIGN\"\n| eval severity=\"CRITICAL\", mitre_technique=\"T1003.001 - LSASS Memory\"\n| table Computer, SourceImage, SourceUser, GrantedAccess, risk, severity, mitre_technique",
+    "tuning_notes": "Whitelist AV/EDR processes that legitimately access LSASS. Common FP sources: MsMpEng.exe, CrowdStrike.",
+    "response": "Immediate host isolation. Run memory forensics. Assume all credentials on host are compromised \u2014 initiate password resets."
+  },
+  {
+    "id": "SPL-004",
+    "name": "Lateral Movement via Pass-the-Hash",
+    "mitre": "T1550.002",
+    "severity": "critical",
+    "description": "Detects network logons using NTLM with no associated interactive session \u2014 characteristic of pass-the-hash.",
+    "log_source": "Windows Security Event Log",
+    "event_ids": [
+      "4624"
+    ],
+    "spl": "index=windows EventCode=4624\n    Logon_Type=3 Authentication_Package=NTLM\n| where NOT (Account_Name=\"ANONYMOUS LOGON\" OR Account_Name=\"*$\")\n| stats count, values(Workstation_Name) AS src_hosts,\n    dc(Workstation_Name) AS unique_src_hosts\n    BY Account_Name, Source_Network_Address\n| where unique_src_hosts >= 3 OR count >= 10\n| eval severity=\"CRITICAL\", mitre_technique=\"T1550.002 - Pass the Hash\"\n| sort -count\n| table Account_Name, Source_Network_Address, count, unique_src_hosts, src_hosts, severity, mitre_technique",
+    "tuning_notes": "Service accounts authenticating across many hosts will FP. Build a baseline of legitimate NTLM traffic first.",
+    "response": "Identify originating host. Rotate Kerberos tickets (klist purge). Reset NTLM hashes. Consider enabling Credential Guard."
+  },
+  {
+    "id": "SPL-005",
+    "name": "Persistence via Registry Run Keys",
+    "mitre": "T1547.001",
+    "severity": "high",
+    "description": "Detects new entries written to HKCU/HKLM Run registry keys \u2014 a common persistence mechanism.",
+    "log_source": "Sysmon Event ID 13 (Registry Value Set)",
+    "event_ids": [
+      "13"
+    ],
+    "spl": "index=sysmon EventCode=13\n| where match(TargetObject,\n    \"CurrentVersion\\\\Run|CurrentVersion\\\\RunOnce|CurrentVersion\\\\RunServices\")\n| where NOT match(Image, \"msiexec|setuphost|WindowsInstaller\")\n| stats count BY Computer, User, Image, TargetObject, Details\n| eval persistence_type=case(\n    match(TargetObject,\"HKCU\"),\"User-Level Persistence\",\n    match(TargetObject,\"HKLM\"),\"System-Level Persistence\",\n    true(),\"Unknown\")\n| eval severity=\"HIGH\", mitre_technique=\"T1547.001 - Registry Run Keys\"\n| table Computer, User, Image, TargetObject, Details, persistence_type, severity, mitre_technique",
+    "tuning_notes": "Software installers frequently write Run keys. Build allowlist of known legitimate software.",
+    "response": "Remove suspicious registry entry. Identify and kill associated process. Investigate parent process chain."
+  },
+  {
+    "id": "SPL-006",
+    "name": "Suspicious Network Connections from Office Applications",
+    "mitre": "T1566.001",
+    "severity": "high",
+    "description": "Detects Office applications (Word, Excel) making outbound network connections \u2014 indicative of macro-based phishing.",
+    "log_source": "Sysmon Event ID 3 (Network Connection)",
+    "event_ids": [
+      "3"
+    ],
+    "spl": "index=sysmon EventCode=3\n    Image IN (\"*\\\\WINWORD.EXE\",\"*\\\\EXCEL.EXE\",\"*\\\\POWERPNT.EXE\",\"*\\\\OUTLOOK.EXE\")\n| where NOT DestinationIp IN (\"127.0.0.1\",\"::1\") AND Initiated=true\n| where NOT match(DestinationHostname, \"microsoft\\.com|office\\.com|live\\.com|msn\\.com\")\n| stats count, values(DestinationIp) AS dst_ips, values(DestinationPort) AS ports\n    BY Computer, User, Image\n| eval severity=\"HIGH\", mitre_technique=\"T1566.001 - Spearphishing Attachment\"\n| sort -count\n| table Computer, User, Image, dst_ips, ports, count, severity, mitre_technique",
+    "tuning_notes": "Whitelist legitimate business domains. Some templates fetch from CDNs \u2014 validate against asset inventory.",
+    "response": "Block outbound connection at firewall. Quarantine the document. Check if payload was downloaded."
+  },
+  {
+    "id": "SPL-007",
+    "name": "Data Exfiltration via DNS Tunneling",
+    "mitre": "T1071.004",
+    "severity": "high",
+    "description": "Detects unusually high DNS query volume or oversized DNS responses \u2014 hallmarks of DNS tunneling (dnscat2, iodine).",
+    "log_source": "DNS Server / Zeek DNS logs",
+    "event_ids": [
+      "dns"
+    ],
+    "spl": "index=network sourcetype=dns\n| stats count AS query_count,\n    avg(answer_length) AS avg_answer_len,\n    dc(query) AS unique_queries,\n    values(query_type) AS query_types\n    BY src_ip, dest_ip\n| where query_count > 500 OR avg_answer_len > 200 OR unique_queries > 300\n| eval tunnel_indicator=case(\n    avg_answer_len > 200, \"HIGH: Large DNS responses\",\n    query_count > 500, \"HIGH: Query volume spike\",\n    unique_queries > 300, \"MEDIUM: High unique query entropy\",\n    true(), \"NOMINAL\")\n| where tunnel_indicator != \"NOMINAL\"\n| eval severity=\"HIGH\", mitre_technique=\"T1071.004 - DNS Tunneling\"\n| table src_ip, dest_ip, query_count, unique_queries, avg_answer_len, tunnel_indicator, severity, mitre_technique",
+    "tuning_notes": "CDN services and DNS resolvers will trigger volume alerts. Filter by internal src_ip ranges only.",
+    "response": "Block DNS queries to suspicious resolver. Capture PCAP for payload analysis. Check for dnscat2/iodine signatures."
+  },
+  {
+    "id": "SPL-008",
+    "name": "Ransomware \u2014 VSS Shadow Copy Deletion",
+    "mitre": "T1490",
+    "severity": "critical",
+    "description": "Detects execution of vssadmin or wmic commands to delete Volume Shadow Copies \u2014 pre-encryption ransomware step.",
+    "log_source": "Windows Security 4688 / Sysmon 1",
+    "event_ids": [
+      "1",
+      "4688"
+    ],
+    "spl": "index=windows (EventCode=4688 OR EventCode=1)\n| where match(CommandLine,\n    \"(?i)(vssadmin.{0,30}delete|wmic.{0,30}shadowcopy.{0,30}delete|bcdedit.{0,30}recoveryenabled.{0,30}no|wbadmin.{0,30}delete)\")\n| stats count, values(CommandLine) AS commands, values(Image) AS processes\n    BY Computer, User\n| eval severity=\"CRITICAL\", mitre_technique=\"T1490 - Inhibit System Recovery\"\n| eval action_required=\"IMMEDIATE ISOLATION \u2014 likely active ransomware deployment\"\n| table Computer, User, commands, processes, severity, mitre_technique, action_required",
+    "tuning_notes": "Nearly zero legitimate use cases for VSS deletion. Treat as critical and respond immediately.",
+    "response": "IMMEDIATE: Isolate host from network. Suspend backups to prevent overwrite. Initiate IR procedure. Do NOT reboot."
+  },
+  {
+    "id": "SPL-009",
+    "name": "Impossible Travel Detection",
+    "mitre": "T1078",
+    "severity": "critical",
+    "description": "Detects successful logins from two geographically distinct locations within an implausibly short time window.",
+    "log_source": "Azure AD / Okta / Auth logs with GeoIP",
+    "event_ids": [
+      "auth_success"
+    ],
+    "spl": "index=auth sourcetype=okta action=success\n| iplocation src_ip\n| stats earliest(_time) AS first_login, latest(_time) AS last_login,\n    values(Country) AS countries, values(src_ip) AS ips, count AS logins\n    BY user\n| eval time_diff_min=round((last_login - first_login)/60, 0)\n| where mvcount(countries) > 1 AND time_diff_min < 120\n| eval severity=\"CRITICAL\", mitre_technique=\"T1078 - Valid Accounts (Impossible Travel)\"\n| eval flag=\"Login from \" + mvjoin(countries,\" AND \") + \" within \" + tostring(time_diff_min) + \" minutes\"\n| table user, countries, ips, logins, time_diff_min, flag, severity, mitre_technique\n| sort -logins",
+    "tuning_notes": "VPN users will FP frequently. Integrate with VPN logs to suppress known VPN egress IPs.",
+    "response": "Suspend account immediately. Notify user via secondary channel. Initiate account takeover investigation."
+  },
+  {
+    "id": "SPL-010",
+    "name": "Service Account Anomalous Interactive Login",
+    "mitre": "T1078.002",
+    "severity": "high",
+    "description": "Service accounts should never log in interactively. This detects logon type 2 (interactive) or 10 (remote interactive) for accounts ending in svc_ or _svc.",
+    "log_source": "Windows Security Event Log",
+    "event_ids": [
+      "4624"
+    ],
+    "spl": "index=windows EventCode=4624\n    (Logon_Type=2 OR Logon_Type=10)\n| where match(Account_Name, \"(?i)^svc_|_svc$|service|^sa_\")\n| where NOT Account_Name=\"*$\"\n| stats count, values(Workstation_Name) AS workstations,\n    values(Logon_Type) AS logon_types\n    BY Account_Name, Source_Network_Address\n| eval logon_type_label=mvmap(logon_types,\n    case(logon_types=2,\"Interactive\",logon_types=10,\"RemoteInteractive\",true(),\"Other\"))\n| eval severity=\"HIGH\", mitre_technique=\"T1078.002 - Domain Accounts Abuse\"\n| table Account_Name, Source_Network_Address, count, workstations, logon_type_label, severity, mitre_technique",
+    "tuning_notes": "Review all service accounts quarterly. Remove interactive logon rights from service accounts via GPO.",
+    "response": "Investigate source IP. Service account credentials may be compromised. Reset password, review permissions."
+  }
+]
