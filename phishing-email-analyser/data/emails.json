@@ -1,0 +1,120 @@
+[
+  {
+    "id": "EMAIL-001",
+    "from": "security-alert@micros0ft-verify.com",
+    "from_display": "Microsoft Security Team",
+    "to": "alice@company.com",
+    "reply_to": "harvester99@protonmail.com",
+    "subject": "URGENT: Your account has been compromised - Verify Now",
+    "date": "2026-05-06T03:14:00",
+    "spf": "FAIL",
+    "dkim": "NONE",
+    "dmarc": "FAIL",
+    "ip": "185.220.101.47",
+    "ip_country": "RU",
+    "body": "Dear Customer, We have detected unusual sign-in activity on your Microsoft account. Your account will be suspended within 24 hours unless you verify your identity immediately. Click here to verify: http://micros0ft-login.verify-account.ru/auth?token=a1b2c3d4e5f6",
+    "urls": [
+      "http://micros0ft-login.verify-account.ru/auth?token=a1b2c3d4e5f6"
+    ],
+    "attachments": [],
+    "headers": {
+      "X-Mailer": "SendGrid",
+      "X-Originating-IP": "185.220.101.47",
+      "Received": "from mail.micros0ft-verify.com (185.220.101.47)"
+    }
+  },
+  {
+    "id": "EMAIL-002",
+    "from": "hr-noreply@company-payroll.net",
+    "from_display": "HR Department",
+    "to": "bob@company.com",
+    "reply_to": "bob@company.com",
+    "subject": "Q2 Salary Adjustment \u2014 Action Required",
+    "date": "2026-05-06T08:30:00",
+    "spf": "SOFTFAIL",
+    "dkim": "FAIL",
+    "dmarc": "NONE",
+    "ip": "45.142.212.100",
+    "ip_country": "CN",
+    "body": "Hi Bob, Please find your Q2 compensation review document attached. Open the file with your company credentials to view. This document expires in 48 hours.",
+    "urls": [],
+    "attachments": [
+      {
+        "name": "Q2_Salary_Review_2026.docm",
+        "type": "application/vnd.ms-word.document.macroEnabled",
+        "size_kb": 245,
+        "hash_md5": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ],
+    "headers": {
+      "X-Mailer": "PHPMailer 6.5",
+      "X-Originating-IP": "45.142.212.100"
+    }
+  },
+  {
+    "id": "EMAIL-003",
+    "from": "noreply@github.com",
+    "from_display": "GitHub",
+    "to": "dev@company.com",
+    "reply_to": "noreply@github.com",
+    "subject": "Your pull request has been merged",
+    "date": "2026-05-06T10:00:00",
+    "spf": "PASS",
+    "dkim": "PASS",
+    "dmarc": "PASS",
+    "ip": "192.30.252.1",
+    "ip_country": "US",
+    "body": "Your pull request #1234 has been successfully merged into main. View the changes at https://github.com/company/repo/pull/1234",
+    "urls": [
+      "https://github.com/company/repo/pull/1234"
+    ],
+    "attachments": [],
+    "headers": {
+      "X-Mailer": "GitHub",
+      "DKIM-Signature": "v=1; a=rsa-sha256; d=github.com"
+    }
+  },
+  {
+    "id": "EMAIL-004",
+    "from": "ceo.john.smith@company-exec.org",
+    "from_display": "John Smith CEO",
+    "to": "finance@company.com",
+    "reply_to": "johnsmith.ceo.2026@gmail.com",
+    "subject": "Urgent Wire Transfer \u2014 Confidential",
+    "date": "2026-05-06T07:45:00",
+    "spf": "FAIL",
+    "dkim": "NONE",
+    "dmarc": "FAIL",
+    "ip": "194.165.16.72",
+    "ip_country": "KP",
+    "body": "Hi, I need you to initiate an urgent wire transfer of $87,500 to our new vendor. This is time sensitive and confidential \u2014 do not discuss with anyone else. I'm in a board meeting and can only communicate via email. Account: GB29NWBK60161331926819 Sort: 60-16-13 Ref: INV-2026-Q2",
+    "urls": [],
+    "attachments": [],
+    "headers": {
+      "X-Originating-IP": "194.165.16.72",
+      "X-Mailer": "Roundcube"
+    }
+  },
+  {
+    "id": "EMAIL-005",
+    "from": "updates@linkedin.com",
+    "from_display": "LinkedIn",
+    "to": "user@company.com",
+    "reply_to": "updates@linkedin.com",
+    "subject": "You have 3 new connection requests",
+    "date": "2026-05-06T09:00:00",
+    "spf": "PASS",
+    "dkim": "PASS",
+    "dmarc": "PASS",
+    "ip": "108.174.10.10",
+    "ip_country": "US",
+    "body": "You have 3 new connection requests on LinkedIn. View your network at https://www.linkedin.com/notifications",
+    "urls": [
+      "https://www.linkedin.com/notifications"
+    ],
+    "attachments": [],
+    "headers": {
+      "DKIM-Signature": "v=1; a=rsa-sha256; d=linkedin.com"
+    }
+  }
+]

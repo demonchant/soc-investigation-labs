@@ -1,0 +1,3 @@
+# stdlib only
+# Optional: requests>=2.31.0   # for VirusTotal URL reputation lookups
+# Optional: imaplib (stdlib)   # for live mailbox ingestion
