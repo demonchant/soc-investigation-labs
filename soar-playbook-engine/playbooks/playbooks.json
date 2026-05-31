@@ -1,0 +1,228 @@
+{
+  "phishing_response": {
+    "id": "PB-001",
+    "name": "Phishing Email Response",
+    "trigger": "phishing_alert",
+    "mitre": "T1566",
+    "steps": [
+      {
+        "step": 1,
+        "action": "notify_analyst",
+        "params": {
+          "message": "Phishing alert received \u2014 beginning automated triage"
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 2,
+        "action": "extract_iocs",
+        "params": {
+          "fields": [
+            "urls",
+            "attachments",
+            "sender_domain"
+          ]
+        },
+        "on_fail": "stop"
+      },
+      {
+        "step": 3,
+        "action": "reputation_check",
+        "params": {
+          "ioc_types": [
+            "url",
+            "domain",
+            "ip"
+          ]
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 4,
+        "action": "quarantine_email",
+        "params": {
+          "reason": "phishing_verdict",
+          "notify_user": true
+        },
+        "on_fail": "escalate"
+      },
+      {
+        "step": 5,
+        "action": "block_sender_domain",
+        "params": {
+          "duration_hours": 72
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 6,
+        "action": "create_ticket",
+        "params": {
+          "priority": "high",
+          "queue": "soc_tier2",
+          "auto_assign": true
+        },
+        "on_fail": "escalate"
+      },
+      {
+        "step": 7,
+        "action": "generate_report",
+        "params": {
+          "include_iocs": true,
+          "format": "json"
+        },
+        "on_fail": "continue"
+      }
+    ]
+  },
+  "brute_force_response": {
+    "id": "PB-002",
+    "name": "Brute Force Account Lockout Response",
+    "trigger": "brute_force_alert",
+    "mitre": "T1110",
+    "steps": [
+      {
+        "step": 1,
+        "action": "notify_analyst",
+        "params": {
+          "message": "Brute force attack detected"
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 2,
+        "action": "block_ip",
+        "params": {
+          "duration_hours": 24,
+          "scope": "perimeter_firewall"
+        },
+        "on_fail": "escalate"
+      },
+      {
+        "step": 3,
+        "action": "check_account_status",
+        "params": {
+          "check_compromise": true
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 4,
+        "action": "lock_account",
+        "params": {
+          "notify_user": true,
+          "reset_required": true
+        },
+        "on_fail": "escalate"
+      },
+      {
+        "step": 5,
+        "action": "geoip_lookup",
+        "params": {
+          "field": "src_ip"
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 6,
+        "action": "create_ticket",
+        "params": {
+          "priority": "medium",
+          "queue": "soc_tier1"
+        },
+        "on_fail": "continue"
+      }
+    ]
+  },
+  "malware_containment": {
+    "id": "PB-003",
+    "name": "Malware / Ransomware Containment",
+    "trigger": "malware_alert",
+    "mitre": "T1486",
+    "steps": [
+      {
+        "step": 1,
+        "action": "notify_analyst",
+        "params": {
+          "message": "CRITICAL: Malware/ransomware activity detected"
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 2,
+        "action": "isolate_host",
+        "params": {
+          "method": "network_isolation",
+          "preserve_memory": true
+        },
+        "on_fail": "escalate"
+      },
+      {
+        "step": 3,
+        "action": "snapshot_host",
+        "params": {
+          "include_memory": true,
+          "include_disk": true
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 4,
+        "action": "collect_forensic_artifacts",
+        "params": {
+          "artifacts": [
+            "processes",
+            "network_connections",
+            "registry",
+            "prefetch"
+          ]
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 5,
+        "action": "block_c2_iocs",
+        "params": {
+          "ioc_types": [
+            "ip",
+            "domain",
+            "url"
+          ]
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 6,
+        "action": "notify_management",
+        "params": {
+          "severity": "critical",
+          "channels": [
+            "email",
+            "slack",
+            "pagerduty"
+          ]
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 7,
+        "action": "create_ticket",
+        "params": {
+          "priority": "critical",
+          "queue": "incident_response",
+          "auto_assign": true
+        },
+        "on_fail": "continue"
+      },
+      {
+        "step": 8,
+        "action": "generate_report",
+        "params": {
+          "include_timeline": true,
+          "format": "pdf"
+        },
+        "on_fail": "continue"
+      }
+    ]
+  }
+}

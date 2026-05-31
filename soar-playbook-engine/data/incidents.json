@@ -1,0 +1,46 @@
+[
+  {
+    "id": "INC-001",
+    "type": "phishing_alert",
+    "host": "WKSTN-01",
+    "user": "alice@company.com",
+    "src_ip": "185.220.101.47",
+    "details": {
+      "subject": "URGENT: Verify account",
+      "sender": "alert@micros0ft-verify.com",
+      "urls": [
+        "http://micros0ft-login.verify.ru/auth"
+      ],
+      "attachments": []
+    }
+  },
+  {
+    "id": "INC-002",
+    "type": "brute_force_alert",
+    "host": "DC-01",
+    "user": "administrator",
+    "src_ip": "45.142.212.100",
+    "details": {
+      "attempts": 47,
+      "time_window_min": 5,
+      "target_accounts": [
+        "administrator",
+        "admin",
+        "svc_backup"
+      ]
+    }
+  },
+  {
+    "id": "INC-003",
+    "type": "malware_alert",
+    "host": "WKSTN-05",
+    "user": "bob@company.com",
+    "src_ip": "10.0.0.55",
+    "details": {
+      "process": "vssadmin.exe",
+      "cmdline": "vssadmin delete shadows /all /quiet",
+      "file_dropped": "C:\\Windows\\Temp\\svchost32.exe",
+      "c2_ip": "185.220.101.47"
+    }
+  }
+]

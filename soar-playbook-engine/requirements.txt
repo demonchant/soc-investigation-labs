@@ -1,0 +1,4 @@
+# stdlib only
+# Optional: requests>=2.31.0   # for live VirusTotal/AbuseIPDB action integration
+# Optional: slack-sdk>=3.19.0  # for real Slack notifications
+# Optional: jira>=3.5.0        # for live Jira ticket creation
