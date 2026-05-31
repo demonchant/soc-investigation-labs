@@ -1,0 +1,2 @@
+# stdlib only
+# Optional: elasticsearch>=8.0.0  # for live Elastic SIEM integration

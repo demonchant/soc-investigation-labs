@@ -1,0 +1,151 @@
+[
+  {
+    "timestamp": "2026-05-06T08:55:00",
+    "source": "dns",
+    "event": "query",
+    "src_ip": "10.0.1.5",
+    "query": "admin.company.com",
+    "response": "10.0.0.1",
+    "user": null
+  },
+  {
+    "timestamp": "2026-05-06T08:55:10",
+    "source": "dns",
+    "event": "query",
+    "src_ip": "10.0.1.5",
+    "query": "vpn.company.com",
+    "response": "10.0.0.2",
+    "user": null
+  },
+  {
+    "timestamp": "2026-05-06T08:55:20",
+    "source": "dns",
+    "event": "query",
+    "src_ip": "10.0.1.5",
+    "query": "mail.company.com",
+    "response": "10.0.0.3",
+    "user": null
+  },
+  {
+    "timestamp": "2026-05-06T09:00:01",
+    "source": "windows",
+    "event": "logon_fail",
+    "src_ip": "10.0.1.5",
+    "host": "DC-01",
+    "user": "administrator",
+    "event_id": 4625
+  },
+  {
+    "timestamp": "2026-05-06T09:00:02",
+    "source": "windows",
+    "event": "logon_fail",
+    "src_ip": "10.0.1.5",
+    "host": "DC-01",
+    "user": "administrator",
+    "event_id": 4625
+  },
+  {
+    "timestamp": "2026-05-06T09:00:03",
+    "source": "windows",
+    "event": "logon_fail",
+    "src_ip": "10.0.1.5",
+    "host": "DC-01",
+    "user": "administrator",
+    "event_id": 4625
+  },
+  {
+    "timestamp": "2026-05-06T09:00:04",
+    "source": "windows",
+    "event": "logon_fail",
+    "src_ip": "10.0.1.5",
+    "host": "DC-01",
+    "user": "administrator",
+    "event_id": 4625
+  },
+  {
+    "timestamp": "2026-05-06T09:00:05",
+    "source": "windows",
+    "event": "logon_fail",
+    "src_ip": "10.0.1.5",
+    "host": "DC-01",
+    "user": "administrator",
+    "event_id": 4625
+  },
+  {
+    "timestamp": "2026-05-06T09:00:10",
+    "source": "windows",
+    "event": "logon_success",
+    "src_ip": "10.0.1.5",
+    "host": "DC-01",
+    "user": "administrator",
+    "event_id": 4624
+  },
+  {
+    "timestamp": "2026-05-06T09:01:00",
+    "source": "firewall",
+    "event": "allow",
+    "src_ip": "10.0.1.5",
+    "dst_ip": "185.220.101.47",
+    "dst_port": 4444,
+    "protocol": "TCP",
+    "bytes": 512000
+  },
+  {
+    "timestamp": "2026-05-06T09:01:05",
+    "source": "proxy",
+    "event": "connect",
+    "src_ip": "10.0.1.5",
+    "dst_url": "http://185.220.101.47/payload.exe",
+    "status_code": 200,
+    "bytes": 245760,
+    "user": "administrator"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:00",
+    "source": "windows",
+    "event": "logon_success",
+    "src_ip": "10.0.1.5",
+    "host": "FILESERVER-01",
+    "user": "administrator",
+    "event_id": 4624
+  },
+  {
+    "timestamp": "2026-05-06T09:02:05",
+    "source": "windows",
+    "event": "logon_success",
+    "src_ip": "10.0.1.5",
+    "host": "WKSTN-10",
+    "user": "administrator",
+    "event_id": 4624
+  },
+  {
+    "timestamp": "2026-05-06T09:02:10",
+    "source": "windows",
+    "event": "logon_success",
+    "src_ip": "10.0.1.5",
+    "host": "WKSTN-11",
+    "user": "administrator",
+    "event_id": 4624
+  },
+  {
+    "timestamp": "2026-05-06T09:03:00",
+    "source": "firewall",
+    "event": "allow",
+    "src_ip": "10.0.1.5",
+    "dst_ip": "185.220.101.47",
+    "dst_port": 443,
+    "protocol": "TCP",
+    "bytes": 8500000
+  },
+  {
+    "timestamp": "2026-05-06T09:04:00",
+    "source": "windows",
+    "event": "process_create",
+    "src_ip": "10.0.1.5",
+    "host": "DC-01",
+    "user": "administrator",
+    "process": "vssadmin.exe",
+    "cmdline": "vssadmin delete shadows /all /quiet",
+    "event_id": 4688
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "COR-001",
+    "name": "Reconnaissance Before Authentication",
+    "description": "DNS queries to internal service hostnames followed by logon attempts from same IP",
+    "sequence": [
+      "dns_internal_recon",
+      "logon_attempt"
+    ],
+    "time_window_minutes": 15,
+    "severity": "medium",
+    "mitre": "T1595.002 - Active Scanning / Recon"
+  },
+  {
+    "id": "COR-002",
+    "name": "Brute Force Followed by Successful Login",
+    "description": "Multiple failed logins then a success from same source IP",
+    "sequence": [
+      "logon_fail_burst",
+      "logon_success"
+    ],
+    "time_window_minutes": 10,
+    "severity": "critical",
+    "mitre": "T1110 - Brute Force \u2192 T1078 - Valid Accounts"
+  },
+  {
+    "id": "COR-003",
+    "name": "Credential Compromise \u2192 C2 Callback Chain",
+    "description": "Login success followed by outbound connection to high-risk IP",
+    "sequence": [
+      "logon_success",
+      "c2_connection"
+    ],
+    "time_window_minutes": 5,
+    "severity": "critical",
+    "mitre": "T1078 - Valid Accounts \u2192 T1071 - C2 Communication"
+  },
+  {
+    "id": "COR-004",
+    "name": "Lateral Movement Pattern",
+    "description": "Single account authenticating to multiple hosts in short window",
+    "sequence": [
+      "multi_host_logon"
+    ],
+    "time_window_minutes": 5,
+    "severity": "high",
+    "mitre": "T1021 - Remote Services (Lateral Movement)"
+  },
+  {
+    "id": "COR-005",
+    "name": "Large Outbound Transfer After Compromise",
+    "description": "Bulk data exfiltration to external IP following a compromise indicator",
+    "sequence": [
+      "logon_success",
+      "large_outbound"
+    ],
+    "time_window_minutes": 30,
+    "severity": "critical",
+    "mitre": "T1048 - Exfiltration Over Alternative Protocol"
+  },
+  {
+    "id": "COR-006",
+    "name": "Full Attack Chain: Recon \u2192 BruteForce \u2192 C2 \u2192 Lateral \u2192 Exfil",
+    "description": "Complete multi-stage attack chain detected across all log sources",
+    "sequence": [
+      "dns_internal_recon",
+      "logon_fail_burst",
+      "logon_success",
+      "c2_connection",
+      "multi_host_logon",
+      "large_outbound"
+    ],
+    "time_window_minutes": 60,
+    "severity": "critical",
+    "mitre": "Full Kill Chain \u2014 T1595\u2192T1110\u2192T1078\u2192T1071\u2192T1021\u2192T1048"
+  }
+]
