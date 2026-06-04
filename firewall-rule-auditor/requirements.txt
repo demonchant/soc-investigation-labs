@@ -1,0 +1,2 @@
+# stdlib only
+# Optional: netaddr>=0.9.0  # for subnet overlap detection
