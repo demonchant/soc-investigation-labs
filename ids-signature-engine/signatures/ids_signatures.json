@@ -1,0 +1,98 @@
+[
+  {
+    "id": "SIG-001",
+    "name": "Web Shell Command Execution",
+    "category": "webshell",
+    "severity": "critical",
+    "mitre": "T1505.003",
+    "pattern": "shell\\.php\\?cmd=|cmd\\.php\\?c=|c99\\.php|r57\\.php",
+    "protocol": "TCP",
+    "port": 80,
+    "description": "Web shell accessed via HTTP GET with command parameter"
+  },
+  {
+    "id": "SIG-002",
+    "name": "DNS Tunneling - Oversized Query",
+    "category": "exfiltration",
+    "severity": "high",
+    "mitre": "T1071.004",
+    "pattern": ".{150,}\\.(com|net|org|io|ru|cn)$",
+    "protocol": "UDP",
+    "port": 53,
+    "description": "DNS query payload exceeds 200 bytes \u2014 indicative of DNS tunneling"
+  },
+  {
+    "id": "SIG-003",
+    "name": "SQL Injection Attempt",
+    "category": "exploit",
+    "severity": "high",
+    "mitre": "T1190",
+    "pattern": "('\\s*OR\\s*'1'\\s*=\\s*'1|UNION\\s+SELECT|--\\s*$|;\\s*DROP\\s+TABLE)",
+    "protocol": "TCP",
+    "port": 80,
+    "description": "Classic SQL injection patterns in HTTP request body"
+  },
+  {
+    "id": "SIG-004",
+    "name": "Directory Traversal Attack",
+    "category": "exploit",
+    "severity": "high",
+    "mitre": "T1190",
+    "pattern": "\\.\\./\\.\\./\\.\\./|\\.\\.\\\\\\.\\.\\\\\\.\\.\\\\ |/etc/passwd|/etc/shadow|/windows/system32",
+    "protocol": "TCP",
+    "port": 80,
+    "description": "Path traversal attempt to access sensitive system files"
+  },
+  {
+    "id": "SIG-005",
+    "name": "EternalBlue SMB Exploit",
+    "category": "exploit",
+    "severity": "critical",
+    "mitre": "T1210",
+    "pattern": "\\xff\\x53\\x4d\\x42|\\x00\\x00\\x00\\x85.*SMB",
+    "protocol": "TCP",
+    "port": 445,
+    "description": "EternalBlue MS17-010 SMB exploit signature (WannaCry/NotPetya)"
+  },
+  {
+    "id": "SIG-006",
+    "name": "PowerShell Download Cradle",
+    "category": "malware",
+    "severity": "critical",
+    "mitre": "T1059.001",
+    "pattern": "IEX.*DownloadString|Invoke-Expression.*WebClient|powershell.*-enc",
+    "protocol": "TCP",
+    "description": "PowerShell remote download and execution cradle \u2014 common malware delivery"
+  },
+  {
+    "id": "SIG-007",
+    "name": "Cross-Site Scripting (XSS)",
+    "category": "exploit",
+    "severity": "medium",
+    "mitre": "T1059.007",
+    "pattern": "<script>.*document\\.cookie|<img.*onerror=|javascript:.*eval\\(",
+    "protocol": "TCP",
+    "port": 80,
+    "description": "XSS payload attempting to steal session cookies"
+  },
+  {
+    "id": "SIG-008",
+    "name": "Cobalt Strike Beacon User-Agent",
+    "category": "c2",
+    "severity": "critical",
+    "mitre": "T1071.001",
+    "pattern": "(Cobalt Strike|CobaltStrike).*Beacon|Mozilla.*Windows NT.*beacon|MSSQL_BACKUP_AND_RESTORE",
+    "protocol": "TCP",
+    "description": "Cobalt Strike beacon identified by characteristic user-agent or beacon pattern"
+  },
+  {
+    "id": "SIG-009",
+    "name": "PE Executable Transfer",
+    "category": "malware",
+    "severity": "high",
+    "mitre": "T1105",
+    "pattern": "MZ\\x90\\x00|\\x4d\\x5a\\x90|PE executable magic",
+    "protocol": "TCP",
+    "description": "Windows PE executable (MZ header) detected in network transfer"
+  }
+]

