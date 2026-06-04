@@ -1,0 +1,182 @@
+[
+  {
+    "timestamp": "2026-05-06T08:30:00",
+    "user": "alice",
+    "action": "login",
+    "src_ip": "10.0.1.5",
+    "host": "WKSTN-01",
+    "country": "NG",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 8
+  },
+  {
+    "timestamp": "2026-05-06T09:00:00",
+    "user": "alice",
+    "action": "file_access",
+    "src_ip": "10.0.1.5",
+    "host": "WKSTN-01",
+    "country": "NG",
+    "files_accessed": 12,
+    "data_mb": 0.5,
+    "hour": 9
+  },
+  {
+    "timestamp": "2026-05-06T10:00:00",
+    "user": "alice",
+    "action": "file_access",
+    "src_ip": "10.0.1.5",
+    "host": "WKSTN-01",
+    "country": "NG",
+    "files_accessed": 8,
+    "data_mb": 0.3,
+    "hour": 10
+  },
+  {
+    "timestamp": "2026-05-06T17:00:00",
+    "user": "alice",
+    "action": "logout",
+    "src_ip": "10.0.1.5",
+    "host": "WKSTN-01",
+    "country": "NG",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 17
+  },
+  {
+    "timestamp": "2026-05-06T02:15:00",
+    "user": "bob",
+    "action": "login",
+    "src_ip": "185.220.101.47",
+    "host": "FILESERVER-01",
+    "country": "RU",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 2
+  },
+  {
+    "timestamp": "2026-05-06T02:20:00",
+    "user": "bob",
+    "action": "bulk_download",
+    "src_ip": "185.220.101.47",
+    "host": "FILESERVER-01",
+    "country": "RU",
+    "files_accessed": 2847,
+    "data_mb": 4200,
+    "hour": 2
+  },
+  {
+    "timestamp": "2026-05-06T02:45:00",
+    "user": "bob",
+    "action": "usb_insert",
+    "src_ip": "185.220.101.47",
+    "host": "FILESERVER-01",
+    "country": "RU",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 2
+  },
+  {
+    "timestamp": "2026-05-06T02:46:00",
+    "user": "bob",
+    "action": "file_copy_to_usb",
+    "src_ip": "185.220.101.47",
+    "host": "FILESERVER-01",
+    "country": "RU",
+    "files_accessed": 847,
+    "data_mb": 2100,
+    "hour": 2
+  },
+  {
+    "timestamp": "2026-05-06T09:00:00",
+    "user": "bob",
+    "action": "login",
+    "src_ip": "10.0.1.6",
+    "host": "WKSTN-02",
+    "country": "NG",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 9
+  },
+  {
+    "timestamp": "2026-05-06T09:30:00",
+    "user": "charlie",
+    "action": "login",
+    "src_ip": "10.0.1.7",
+    "host": "DC-01",
+    "country": "NG",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 9
+  },
+  {
+    "timestamp": "2026-05-06T09:35:00",
+    "user": "charlie",
+    "action": "admin_tool_use",
+    "src_ip": "10.0.1.7",
+    "host": "DC-01",
+    "country": "NG",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 9,
+    "tool": "Active Directory Users and Computers"
+  },
+  {
+    "timestamp": "2026-05-06T09:36:00",
+    "user": "charlie",
+    "action": "privilege_use",
+    "src_ip": "10.0.1.7",
+    "host": "DC-01",
+    "country": "NG",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 9,
+    "privilege": "SeDebugPrivilege"
+  },
+  {
+    "timestamp": "2026-05-06T09:40:00",
+    "user": "charlie",
+    "action": "bulk_download",
+    "src_ip": "10.0.1.7",
+    "host": "DC-01",
+    "country": "NG",
+    "files_accessed": 500,
+    "data_mb": 800,
+    "hour": 9
+  },
+  {
+    "timestamp": "2026-05-06T23:45:00",
+    "user": "diana",
+    "action": "login",
+    "src_ip": "10.0.1.8",
+    "host": "WKSTN-04",
+    "country": "NG",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 23
+  },
+  {
+    "timestamp": "2026-05-06T23:50:00",
+    "user": "diana",
+    "action": "file_access",
+    "src_ip": "10.0.1.8",
+    "host": "WKSTN-04",
+    "country": "NG",
+    "files_accessed": 95,
+    "data_mb": 1200,
+    "hour": 23
+  },
+  {
+    "timestamp": "2026-05-06T23:55:00",
+    "user": "diana",
+    "action": "email_send",
+    "src_ip": "10.0.1.8",
+    "host": "WKSTN-04",
+    "country": "NG",
+    "files_accessed": 0,
+    "data_mb": 0,
+    "hour": 23,
+    "recipient": "personal@gmail.com",
+    "attachments": 4
+  }
+]
