@@ -1,0 +1,162 @@
+{
+  "s3_buckets": [
+    {
+      "name": "company-public-assets",
+      "public_read": true,
+      "public_write": false,
+      "versioning": true,
+      "encryption": true,
+      "logging": true,
+      "region": "us-east-1"
+    },
+    {
+      "name": "company-hr-records",
+      "public_read": true,
+      "public_write": true,
+      "versioning": false,
+      "encryption": false,
+      "logging": false,
+      "region": "us-east-1"
+    },
+    {
+      "name": "company-backups",
+      "public_read": false,
+      "public_write": false,
+      "versioning": true,
+      "encryption": true,
+      "logging": true,
+      "region": "us-east-1"
+    },
+    {
+      "name": "company-dev-scratch",
+      "public_read": true,
+      "public_write": false,
+      "versioning": false,
+      "encryption": false,
+      "logging": false,
+      "region": "us-west-2"
+    }
+  ],
+  "security_groups": [
+    {
+      "id": "sg-001",
+      "name": "web-servers",
+      "rules": [
+        {
+          "direction": "inbound",
+          "port": "443",
+          "src": "0.0.0.0/0"
+        },
+        {
+          "direction": "inbound",
+          "port": "80",
+          "src": "0.0.0.0/0"
+        },
+        {
+          "direction": "inbound",
+          "port": "22",
+          "src": "0.0.0.0/0"
+        }
+      ]
+    },
+    {
+      "id": "sg-002",
+      "name": "database-tier",
+      "rules": [
+        {
+          "direction": "inbound",
+          "port": "5432",
+          "src": "0.0.0.0/0"
+        },
+        {
+          "direction": "inbound",
+          "port": "3306",
+          "src": "0.0.0.0/0"
+        }
+      ]
+    },
+    {
+      "id": "sg-003",
+      "name": "internal-only",
+      "rules": [
+        {
+          "direction": "inbound",
+          "port": "any",
+          "src": "10.0.0.0/8"
+        }
+      ]
+    },
+    {
+      "id": "sg-004",
+      "name": "management",
+      "rules": [
+        {
+          "direction": "inbound",
+          "port": "3389",
+          "src": "0.0.0.0/0"
+        },
+        {
+          "direction": "inbound",
+          "port": "5900",
+          "src": "0.0.0.0/0"
+        }
+      ]
+    }
+  ],
+  "iam_users": [
+    {
+      "username": "alice",
+      "mfa_enabled": true,
+      "access_keys": 1,
+      "last_used_days": 5,
+      "console_access": true,
+      "policies": [
+        "ReadOnlyAccess"
+      ]
+    },
+    {
+      "username": "svc_deploy",
+      "mfa_enabled": false,
+      "access_keys": 2,
+      "last_used_days": 180,
+      "console_access": false,
+      "policies": [
+        "AdministratorAccess"
+      ]
+    },
+    {
+      "username": "bob",
+      "mfa_enabled": false,
+      "access_keys": 1,
+      "last_used_days": 12,
+      "console_access": true,
+      "policies": [
+        "PowerUserAccess"
+      ]
+    },
+    {
+      "username": "old_contractor",
+      "mfa_enabled": false,
+      "access_keys": 1,
+      "last_used_days": 400,
+      "console_access": true,
+      "policies": [
+        "AdministratorAccess"
+      ]
+    }
+  ],
+  "cloudtrail": {
+    "enabled": true,
+    "multi_region": false,
+    "log_validation": false,
+    "s3_bucket": "company-cloudtrail-logs"
+  },
+  "password_policy": {
+    "min_length": 6,
+    "require_uppercase": false,
+    "require_numbers": false,
+    "require_symbols": false,
+    "max_age_days": 0,
+    "reuse_prevention": 0
+  }
+}
