@@ -1,0 +1,101 @@
+{
+  "network_segments": [
+    {
+      "segment": "Corporate",
+      "assets": [
+        "WKSTN-01",
+        "WKSTN-02"
+      ],
+      "internet_facing": false,
+      "micro_segmented": false,
+      "east_west_controls": false
+    },
+    {
+      "segment": "Server",
+      "assets": [
+        "DC-01",
+        "FILESERVER-01"
+      ],
+      "internet_facing": false,
+      "micro_segmented": false,
+      "east_west_controls": false
+    },
+    {
+      "segment": "DMZ",
+      "assets": [
+        "web-lb-01"
+      ],
+      "internet_facing": true,
+      "micro_segmented": true,
+      "east_west_controls": true
+    }
+  ],
+  "users": [
+    {
+      "username": "alice",
+      "role": "developer",
+      "mfa_enabled": true,
+      "device_trust_verified": true,
+      "least_privilege": true,
+      "session_timeout_mins": 60,
+      "access_reviewed_days_ago": 25
+    },
+    {
+      "username": "bob",
+      "role": "developer",
+      "mfa_enabled": false,
+      "device_trust_verified": false,
+      "least_privilege": false,
+      "session_timeout_mins": 480,
+      "access_reviewed_days_ago": 95
+    },
+    {
+      "username": "svc_deploy",
+      "role": "service",
+      "mfa_enabled": false,
+      "device_trust_verified": false,
+      "least_privilege": false,
+      "session_timeout_mins": 0,
+      "access_reviewed_days_ago": 400
+    },
+    {
+      "username": "vendor_x",
+      "role": "third_party",
+      "mfa_enabled": false,
+      "device_trust_verified": false,
+      "least_privilege": true,
+      "session_timeout_mins": 240,
+      "access_reviewed_days_ago": 180
+    }
+  ],
+  "applications": [
+    {
+      "name": "Legacy ERP",
+      "auth_method": "basic_auth",
+      "encrypted_in_transit": false,
+      "encrypted_at_rest": false,
+      "access_logs": false
+    },
+    {
+      "name": "HR Portal",
+      "auth_method": "SSO+MFA",
+      "encrypted_in_transit": true,
+      "encrypted_at_rest": true,
+      "access_logs": true
+    },
+    {
+      "name": "SCADA Dashboard",
+      "auth_method": "none",
+      "encrypted_in_transit": false,
+      "encrypted_at_rest": false,
+      "access_logs": false
+    }
+  ],
+  "continuous_monitoring": {
+    "behaviour_analytics_enabled": false,
+    "privileged_session_recording": false,
+    "real_time_threat_detection": true,
+    "log_all_access": false,
+    "anomaly_detection": false
+  }
+}
