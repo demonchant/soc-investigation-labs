@@ -1,0 +1,42 @@
+[
+  {
+    "endpoint": "/api/v1/users",
+    "method": "GET",
+    "auth_required": true,
+    "rate_limited": true,
+    "returns_pii": true,
+    "input_validation": true
+  },
+  {
+    "endpoint": "/api/v1/admin/users",
+    "method": "GET",
+    "auth_required": false,
+    "rate_limited": false,
+    "returns_pii": true,
+    "input_validation": true
+  },
+  {
+    "endpoint": "/api/v1/payments",
+    "method": "POST",
+    "auth_required": true,
+    "rate_limited": false,
+    "returns_pii": true,
+    "input_validation": false
+  },
+  {
+    "endpoint": "/api/v1/debug/stack",
+    "method": "GET",
+    "auth_required": false,
+    "rate_limited": false,
+    "returns_pii": true,
+    "input_validation": false
+  },
+  {
+    "endpoint": "/api/v1/users/export",
+    "method": "GET",
+    "auth_required": true,
+    "rate_limited": false,
+    "returns_pii": true,
+    "input_validation": true
+  }
+]
