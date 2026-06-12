@@ -1,0 +1,112 @@
+[
+  {
+    "container_id": "c1a2b3d4",
+    "image": "nginx:1.18",
+    "image_tag": "1.18",
+    "service": "web-frontend",
+    "running_as_root": true,
+    "privileged_mode": false,
+    "read_only_filesystem": false,
+    "network_mode": "host",
+    "exposed_ports": [
+      80,
+      443,
+      8080
+    ],
+    "environment_vars": {
+      "DB_PASSWORD": "hardcoded_pass123",
+      "API_KEY": "sk-abc123def456"
+    },
+    "volumes": [
+      "/etc:/etc:rw",
+      "/var/run/docker.sock:/var/run/docker.sock"
+    ],
+    "capabilities_added": [
+      "NET_ADMIN",
+      "SYS_PTRACE"
+    ],
+    "seccomp_profile": null,
+    "apparmor_profile": null,
+    "image_vulnerabilities": 12,
+    "image_age_days": 420
+  },
+  {
+    "container_id": "e5f6a7b8",
+    "image": "postgres:14",
+    "image_tag": "14",
+    "service": "database",
+    "running_as_root": false,
+    "privileged_mode": false,
+    "read_only_filesystem": true,
+    "network_mode": "bridge",
+    "exposed_ports": [
+      5432
+    ],
+    "environment_vars": {
+      "POSTGRES_DB": "appdb"
+    },
+    "volumes": [
+      "/data:/var/lib/postgresql/data"
+    ],
+    "capabilities_added": [],
+    "seccomp_profile": "default",
+    "apparmor_profile": "docker-default",
+    "image_vulnerabilities": 2,
+    "image_age_days": 30
+  },
+  {
+    "container_id": "c9d0e1f2",
+    "image": "custom-app:latest",
+    "image_tag": "latest",
+    "service": "internal-api",
+    "running_as_root": true,
+    "privileged_mode": true,
+    "read_only_filesystem": false,
+    "network_mode": "bridge",
+    "exposed_ports": [
+      22,
+      3000,
+      9000
+    ],
+    "environment_vars": {
+      "SECRET_KEY": "super_secret_12345",
+      "DEBUG": "true"
+    },
+    "volumes": [
+      "/:/host:rw",
+      "/proc:/host/proc:rw"
+    ],
+    "capabilities_added": [
+      "SYS_ADMIN",
+      "NET_ADMIN",
+      "SYS_PTRACE",
+      "DAC_OVERRIDE"
+    ],
+    "seccomp_profile": null,
+    "apparmor_profile": null,
+    "image_vulnerabilities": 34,
+    "image_age_days": 180
+  },
+  {
+    "container_id": "g3h4i5j6",
+    "image": "redis:7",
+    "image_tag": "7",
+    "service": "cache",
+    "running_as_root": false,
+    "privileged_mode": false,
+    "read_only_filesystem": true,
+    "network_mode": "bridge",
+    "exposed_ports": [
+      6379
+    ],
+    "environment_vars": {
+      "REDIS_PASSWORD": ""
+    },
+    "volumes": [],
+    "capabilities_added": [],
+    "seccomp_profile": "default",
+    "apparmor_profile": "docker-default",
+    "image_vulnerabilities": 0,
+    "image_age_days": 15
+  }
+]
