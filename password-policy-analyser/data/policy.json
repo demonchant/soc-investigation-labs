@@ -1,0 +1,7 @@
+{
+  "min_length": 12,
+  "max_age_days": 90,
+  "require_mfa": true,
+  "prevent_reuse": true,
+  "service_account_rotation_days": 180
+}

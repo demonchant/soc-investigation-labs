@@ -1,0 +1,47 @@
+[
+  {
+    "username": "alice",
+    "password_hash": "$2b$12$LQv3c",
+    "last_changed_days_ago": 15,
+    "mfa_enabled": true,
+    "account_type": "user",
+    "password_reused": false,
+    "length_estimate": 14
+  },
+  {
+    "username": "bob",
+    "password_hash": "$2b$04$weak",
+    "last_changed_days_ago": 410,
+    "mfa_enabled": false,
+    "account_type": "user",
+    "password_reused": true,
+    "length_estimate": 8
+  },
+  {
+    "username": "svc_deploy",
+    "password_hash": "$2b$04$simple",
+    "last_changed_days_ago": 730,
+    "mfa_enabled": false,
+    "account_type": "service",
+    "password_reused": true,
+    "length_estimate": 6
+  },
+  {
+    "username": "admin",
+    "password_hash": "$2b$12$strong",
+    "last_changed_days_ago": 45,
+    "mfa_enabled": true,
+    "account_type": "admin",
+    "password_reused": false,
+    "length_estimate": 20
+  },
+  {
+    "username": "old_contractor",
+    "password_hash": "$2b$04$old",
+    "last_changed_days_ago": 500,
+    "mfa_enabled": false,
+    "account_type": "user",
+    "password_reused": true,
+    "length_estimate": 7
+  }
+]
