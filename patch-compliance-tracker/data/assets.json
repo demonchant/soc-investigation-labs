@@ -1,0 +1,98 @@
+[
+  {
+    "asset_id": "SRV-001",
+    "hostname": "DC-01",
+    "os": "Windows Server 2019",
+    "criticality": "critical",
+    "patches_missing": [
+      "KB5034441",
+      "KB5035845"
+    ],
+    "last_scan": "2026-05-01",
+    "last_patched": "2026-03-15",
+    "days_since_patched": 52,
+    "patch_compliance_pct": 94,
+    "internet_facing": false,
+    "known_exploited_missing": true
+  },
+  {
+    "asset_id": "SRV-002",
+    "hostname": "EXCHANGE-01",
+    "os": "Windows Server 2022",
+    "criticality": "critical",
+    "patches_missing": [
+      "KB5034441",
+      "KB5032196",
+      "KB5035857"
+    ],
+    "last_scan": "2026-05-01",
+    "last_patched": "2026-01-10",
+    "days_since_patched": 115,
+    "patch_compliance_pct": 88,
+    "internet_facing": true,
+    "known_exploited_missing": true
+  },
+  {
+    "asset_id": "SRV-003",
+    "hostname": "web-lb-01",
+    "os": "Ubuntu 22.04",
+    "criticality": "high",
+    "patches_missing": [
+      "USN-6674-1"
+    ],
+    "last_scan": "2026-05-01",
+    "last_patched": "2026-04-01",
+    "days_since_patched": 35,
+    "patch_compliance_pct": 96,
+    "internet_facing": true,
+    "known_exploited_missing": false
+  },
+  {
+    "asset_id": "WKS-001",
+    "hostname": "WKSTN-01",
+    "os": "Windows 11",
+    "criticality": "medium",
+    "patches_missing": [
+      "KB5034843"
+    ],
+    "last_scan": "2026-05-01",
+    "last_patched": "2026-04-20",
+    "days_since_patched": 16,
+    "patch_compliance_pct": 98,
+    "internet_facing": false,
+    "known_exploited_missing": false
+  },
+  {
+    "asset_id": "WKS-002",
+    "hostname": "WKSTN-05",
+    "os": "Windows 10",
+    "criticality": "medium",
+    "patches_missing": [
+      "KB5034763",
+      "KB5035941",
+      "KB5036605",
+      "KB5037591"
+    ],
+    "last_scan": "2026-05-01",
+    "last_patched": "2025-12-01",
+    "days_since_patched": 156,
+    "patch_compliance_pct": 72,
+    "internet_facing": false,
+    "known_exploited_missing": true
+  },
+  {
+    "asset_id": "NET-001",
+    "hostname": "FIREWALL-01",
+    "os": "PAN-OS 10.1",
+    "criticality": "critical",
+    "patches_missing": [
+      "PAN-SA-2024-0003"
+    ],
+    "last_scan": "2026-05-01",
+    "last_patched": "2025-11-01",
+    "days_since_patched": 186,
+    "patch_compliance_pct": 85,
+    "internet_facing": true,
+    "known_exploited_missing": true
+  }
+]

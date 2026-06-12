@@ -1,0 +1,7 @@
+{
+  "critical_exploited_days": 1,
+  "critical_days": 7,
+  "high_days": 14,
+  "medium_days": 30,
+  "low_days": 90
+}
