@@ -1,0 +1,112 @@
+[
+  {
+    "timestamp": "2026-05-06T09:00:01",
+    "src_ip": "10.0.1.5",
+    "query": "admin.company.com",
+    "qtype": "A",
+    "response": "10.0.0.1",
+    "response_code": "NOERROR",
+    "query_length": 18,
+    "ttl": 300
+  },
+  {
+    "timestamp": "2026-05-06T09:00:02",
+    "src_ip": "10.0.1.5",
+    "query": "aabbccddeeff00112233445566778899aabbccdd.evil.ru",
+    "qtype": "TXT",
+    "response": "",
+    "response_code": "NOERROR",
+    "query_length": 48,
+    "ttl": 0
+  },
+  {
+    "timestamp": "2026-05-06T09:00:03",
+    "src_ip": "10.0.1.5",
+    "query": "aabbccddeeff00112233445566778899.evil.ru",
+    "qtype": "TXT",
+    "response": "",
+    "response_code": "NOERROR",
+    "query_length": 44,
+    "ttl": 0
+  },
+  {
+    "timestamp": "2026-05-06T09:01:00",
+    "src_ip": "10.0.1.10",
+    "query": "paypa1.com",
+    "qtype": "A",
+    "response": "185.220.101.47",
+    "response_code": "NOERROR",
+    "query_length": 10,
+    "ttl": 60
+  },
+  {
+    "timestamp": "2026-05-06T09:01:01",
+    "src_ip": "10.0.1.10",
+    "query": "micros0ft-login.com",
+    "qtype": "A",
+    "response": "45.142.212.100",
+    "response_code": "NOERROR",
+    "query_length": 19,
+    "ttl": 60
+  },
+  {
+    "timestamp": "2026-05-06T09:02:00",
+    "src_ip": "10.0.1.15",
+    "query": "xvwz9q2r.dga-c2.net",
+    "qtype": "A",
+    "response": "",
+    "response_code": "NXDOMAIN",
+    "query_length": 20,
+    "ttl": 0
+  },
+  {
+    "timestamp": "2026-05-06T09:02:01",
+    "src_ip": "10.0.1.15",
+    "query": "k3m8p1xw.dga-c2.net",
+    "qtype": "A",
+    "response": "",
+    "response_code": "NXDOMAIN",
+    "query_length": 20,
+    "ttl": 0
+  },
+  {
+    "timestamp": "2026-05-06T09:02:02",
+    "src_ip": "10.0.1.15",
+    "query": "b7nz4qwt.dga-c2.net",
+    "qtype": "A",
+    "response": "",
+    "response_code": "NXDOMAIN",
+    "query_length": 20,
+    "ttl": 0
+  },
+  {
+    "timestamp": "2026-05-06T09:02:03",
+    "src_ip": "10.0.1.15",
+    "query": "m2xp9rzv.dga-c2.net",
+    "qtype": "A",
+    "response": "",
+    "response_code": "NXDOMAIN",
+    "query_length": 20,
+    "ttl": 0
+  },
+  {
+    "timestamp": "2026-05-06T09:02:04",
+    "src_ip": "10.0.1.15",
+    "query": "h5wq7ynb.dga-c2.net",
+    "qtype": "A",
+    "response": "",
+    "response_code": "NXDOMAIN",
+    "query_length": 20,
+    "ttl": 0
+  },
+  {
+    "timestamp": "2026-05-06T09:03:00",
+    "src_ip": "10.0.1.25",
+    "query": "company.com",
+    "qtype": "A",
+    "response": "203.0.113.10",
+    "response_code": "NOERROR",
+    "query_length": 11,
+    "ttl": 300
+  }
+]
