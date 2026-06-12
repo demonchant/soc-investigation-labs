@@ -1,0 +1,127 @@
+[
+  {
+    "timestamp": "2026-05-06T09:00:01",
+    "host": "WKSTN-01",
+    "event_type": "file_rename",
+    "user": "alice",
+    "old_name": "report.xlsx",
+    "new_name": "report.xlsx.LOCKED",
+    "path": "C:\\Users\\alice\\Documents\\",
+    "process": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:02",
+    "host": "WKSTN-01",
+    "event_type": "file_rename",
+    "user": "alice",
+    "old_name": "budget.docx",
+    "new_name": "budget.docx.LOCKED",
+    "path": "C:\\Users\\alice\\Documents\\",
+    "process": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:03",
+    "host": "WKSTN-01",
+    "event_type": "file_rename",
+    "user": "alice",
+    "old_name": "data.csv",
+    "new_name": "data.csv.LOCKED",
+    "path": "C:\\Users\\alice\\Desktop\\",
+    "process": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:04",
+    "host": "WKSTN-01",
+    "event_type": "file_rename",
+    "user": "alice",
+    "old_name": "contracts.pdf",
+    "new_name": "contracts.pdf.LOCKED",
+    "path": "C:\\Users\\alice\\Desktop\\",
+    "process": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:05",
+    "host": "WKSTN-01",
+    "event_type": "file_rename",
+    "user": "alice",
+    "old_name": "passwords.kdbx",
+    "new_name": "passwords.kdbx.LOCKED",
+    "path": "C:\\Users\\alice\\Desktop\\",
+    "process": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:06",
+    "host": "WKSTN-01",
+    "event_type": "file_create",
+    "user": "alice",
+    "filename": "HOW_TO_DECRYPT.txt",
+    "path": "C:\\Users\\alice\\Documents\\",
+    "process": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:07",
+    "host": "WKSTN-01",
+    "event_type": "file_create",
+    "user": "alice",
+    "filename": "HOW_TO_DECRYPT.txt",
+    "path": "C:\\Users\\alice\\Desktop\\",
+    "process": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:10",
+    "host": "WKSTN-01",
+    "event_type": "process_create",
+    "user": "alice",
+    "process": "vssadmin.exe",
+    "cmdline": "vssadmin delete shadows /all /quiet",
+    "parent": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:11",
+    "host": "WKSTN-01",
+    "event_type": "process_create",
+    "user": "alice",
+    "process": "bcdedit.exe",
+    "cmdline": "bcdedit /set {default} recoveryenabled No",
+    "parent": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:00:15",
+    "host": "WKSTN-01",
+    "event_type": "registry_set",
+    "user": "alice",
+    "key": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "value": "svchost32",
+    "data": "C:\\Windows\\Temp\\svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:01:00",
+    "host": "WKSTN-01",
+    "event_type": "network_connect",
+    "user": "alice",
+    "dst_ip": "185.220.101.47",
+    "dst_port": 443,
+    "process": "svchost32.exe",
+    "bytes_sent": 245000
+  },
+  {
+    "timestamp": "2026-05-06T09:02:00",
+    "host": "WKSTN-02",
+    "event_type": "file_rename",
+    "user": "alice",
+    "old_name": "server_backup.bak",
+    "new_name": "server_backup.bak.LOCKED",
+    "path": "C:\\Backups\\",
+    "process": "svchost32.exe"
+  },
+  {
+    "timestamp": "2026-05-06T09:02:01",
+    "host": "WKSTN-03",
+    "event_type": "file_rename",
+    "user": "alice",
+    "old_name": "invoice_db.mdb",
+    "new_name": "invoice_db.mdb.LOCKED",
+    "path": "D:\\Database\\",
+    "process": "svchost32.exe"
+  }
+]
