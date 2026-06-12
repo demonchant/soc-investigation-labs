@@ -1,0 +1,145 @@
+[
+  {
+    "campaign_id": "CAM-001",
+    "name": "CEO Wire Transfer BEC Test",
+    "type": "bec_ceo_fraud",
+    "sent_date": "2026-04-01",
+    "emails_sent": 120,
+    "emails_opened": 89,
+    "links_clicked": 34,
+    "credentials_submitted": 18,
+    "reported_suspicious": 12,
+    "department_breakdown": {
+      "Finance": {
+        "sent": 25,
+        "clicked": 12,
+        "submitted": 8,
+        "reported": 2
+      },
+      "HR": {
+        "sent": 20,
+        "clicked": 8,
+        "submitted": 4,
+        "reported": 3
+      },
+      "Engineering": {
+        "sent": 30,
+        "clicked": 5,
+        "submitted": 2,
+        "reported": 5
+      },
+      "Sales": {
+        "sent": 25,
+        "clicked": 7,
+        "submitted": 3,
+        "reported": 1
+      },
+      "Executive": {
+        "sent": 20,
+        "clicked": 2,
+        "submitted": 1,
+        "reported": 1
+      }
+    },
+    "repeat_clickers": [
+      "alice@company.com",
+      "bob@company.com",
+      "charlie@company.com"
+    ]
+  },
+  {
+    "campaign_id": "CAM-002",
+    "name": "IT Password Reset Phish",
+    "type": "credential_harvest",
+    "sent_date": "2026-04-15",
+    "emails_sent": 150,
+    "emails_opened": 110,
+    "links_clicked": 52,
+    "credentials_submitted": 28,
+    "reported_suspicious": 22,
+    "department_breakdown": {
+      "Finance": {
+        "sent": 30,
+        "clicked": 10,
+        "submitted": 5,
+        "reported": 6
+      },
+      "HR": {
+        "sent": 25,
+        "clicked": 12,
+        "submitted": 7,
+        "reported": 4
+      },
+      "Engineering": {
+        "sent": 40,
+        "clicked": 8,
+        "submitted": 3,
+        "reported": 9
+      },
+      "Sales": {
+        "sent": 30,
+        "clicked": 14,
+        "submitted": 8,
+        "reported": 2
+      },
+      "Executive": {
+        "sent": 25,
+        "clicked": 8,
+        "submitted": 5,
+        "reported": 1
+      }
+    },
+    "repeat_clickers": [
+      "diana@company.com",
+      "eve@company.com"
+    ]
+  },
+  {
+    "campaign_id": "CAM-003",
+    "name": "Malicious Invoice Attachment",
+    "type": "malicious_attachment",
+    "sent_date": "2026-05-01",
+    "emails_sent": 100,
+    "emails_opened": 72,
+    "links_clicked": 0,
+    "attachments_opened": 31,
+    "credentials_submitted": 0,
+    "reported_suspicious": 28,
+    "department_breakdown": {
+      "Finance": {
+        "sent": 20,
+        "clicked": 0,
+        "submitted": 0,
+        "reported": 8
+      },
+      "HR": {
+        "sent": 20,
+        "clicked": 0,
+        "submitted": 0,
+        "reported": 7
+      },
+      "Engineering": {
+        "sent": 30,
+        "clicked": 0,
+        "submitted": 0,
+        "reported": 10
+      },
+      "Sales": {
+        "sent": 20,
+        "clicked": 0,
+        "submitted": 0,
+        "reported": 2
+      },
+      "Executive": {
+        "sent": 10,
+        "clicked": 0,
+        "submitted": 0,
+        "reported": 1
+      }
+    },
+    "repeat_clickers": [
+      "bob@company.com",
+      "frank@company.com"
+    ]
+  }
+]

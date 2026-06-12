@@ -1,0 +1,42 @@
+[
+  {
+    "employee": "alice@company.com",
+    "department": "Finance",
+    "phishing_awareness_complete": false,
+    "security_basics_complete": true,
+    "repeat_offender": true,
+    "risk_score": 85
+  },
+  {
+    "employee": "bob@company.com",
+    "department": "HR",
+    "phishing_awareness_complete": false,
+    "security_basics_complete": false,
+    "repeat_offender": true,
+    "risk_score": 95
+  },
+  {
+    "employee": "charlie@company.com",
+    "department": "Finance",
+    "phishing_awareness_complete": true,
+    "security_basics_complete": true,
+    "repeat_offender": false,
+    "risk_score": 20
+  },
+  {
+    "employee": "diana@company.com",
+    "department": "Sales",
+    "phishing_awareness_complete": false,
+    "security_basics_complete": true,
+    "repeat_offender": true,
+    "risk_score": 75
+  },
+  {
+    "employee": "eve@company.com",
+    "department": "HR",
+    "phishing_awareness_complete": true,
+    "security_basics_complete": true,
+    "repeat_offender": false,
+    "risk_score": 15
+  }
+]
