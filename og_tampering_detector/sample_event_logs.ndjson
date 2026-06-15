@@ -1,0 +1,44 @@
+{"timestamp": "2026-06-15T10:34:59.021302+00:00", "event_id": 4624, "record_id": 1185, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T09:55:39.021302+00:00", "event_id": 4648, "record_id": 1002, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:08:39.021302+00:00", "event_id": 4624, "record_id": 1015, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:21:39.021302+00:00", "event_id": 4625, "record_id": 1028, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:31:59.021302+00:00", "event_id": 4624, "record_id": 1182, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:04:39.021302+00:00", "event_id": 4648, "record_id": 1011, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:15:39.021302+00:00", "event_id": 4768, "record_id": 1022, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:23:39.021302+00:00", "event_id": 4624, "record_id": 1030, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:30:59.021302+00:00", "event_id": 4624, "record_id": 1181, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:33:59.021302+00:00", "event_id": 4624, "record_id": 1184, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:14:39.021302+00:00", "event_id": 4625, "record_id": 1021, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T09:56:39.021302+00:00", "event_id": 4648, "record_id": 1003, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:06:39.021302+00:00", "event_id": 4625, "record_id": 1013, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:27:59.021302+00:00", "event_id": 4624, "record_id": 1178, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:00:39.021302+00:00", "event_id": 4624, "record_id": 1007, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T11:02:59.021302+00:00", "host": "linux-web-01", "user": "root", "os": "linux", "command_line": "systemctl stop auditd", "message": "auditd stopped"}
+{"timestamp": "2026-06-15T10:03:39.021302+00:00", "event_id": 4625, "record_id": 1010, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T09:54:39.021302+00:00", "event_id": 4648, "record_id": 1001, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:07:39.021302+00:00", "event_id": 4768, "record_id": 1014, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:22:39.021302+00:00", "event_id": 4768, "record_id": 1029, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:11:39.021302+00:00", "event_id": 4625, "record_id": 1018, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:09:39.021302+00:00", "event_id": 4768, "record_id": 1016, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:28:59.021302+00:00", "event_id": 4624, "record_id": 1179, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:32:59.021302+00:00", "event_id": 4624, "record_id": 1183, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:54:44.021302+00:00", "event_id": 4719, "record_id": 1189, "host": "DC-01", "user": "attacker", "os": "windows", "message": "Audit policy changed"}
+{"timestamp": "2026-06-15T11:01:19.021302+00:00", "host": "linux-web-01", "user": "www-data", "os": "linux", "command_line": "echo '' > /var/log/auth.log", "message": "log cleared"}
+{"timestamp": "2026-06-15T10:35:59.021302+00:00", "event_id": 4624, "record_id": 1186, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:18:39.021302+00:00", "event_id": 4624, "record_id": 1025, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:54:39.021302+00:00", "event_id": 1102, "record_id": 1188, "host": "DC-01", "user": "attacker", "os": "windows", "message": "The audit log was cleared"}
+{"timestamp": "2026-06-15T10:12:39.021302+00:00", "event_id": 4625, "record_id": 1019, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:13:39.021302+00:00", "event_id": 4625, "record_id": 1020, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T09:59:39.021302+00:00", "event_id": 4624, "record_id": 1006, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:17:39.021302+00:00", "event_id": 4624, "record_id": 1024, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T09:57:39.021302+00:00", "event_id": 4625, "record_id": 1004, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:10:39.021302+00:00", "event_id": 4768, "record_id": 1017, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:19:39.021302+00:00", "event_id": 4648, "record_id": 1026, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:01:39.021302+00:00", "event_id": 4648, "record_id": 1008, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:02:39.021302+00:00", "event_id": 4625, "record_id": 1009, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:36:59.021302+00:00", "event_id": 4624, "record_id": 1187, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:29:59.021302+00:00", "event_id": 4624, "record_id": 1180, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T09:58:39.021302+00:00", "event_id": 4625, "record_id": 1005, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:16:39.021302+00:00", "event_id": 4648, "record_id": 1023, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:05:39.021302+00:00", "event_id": 4625, "record_id": 1012, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
+{"timestamp": "2026-06-15T10:20:39.021302+00:00", "event_id": 4625, "record_id": 1027, "host": "DC-01", "user": "SYSTEM", "os": "windows"}
