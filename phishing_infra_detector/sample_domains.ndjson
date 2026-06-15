@@ -1,0 +1,5 @@
+{"domain": "micosoft-login.xyz", "first_seen_days_ago": 3, "hosting_ip": "185.220.101.47", "has_mx": true, "has_ssl": true, "spf_record": "", "dkim_record": "", "dmarc_record": "", "registrar": "Namecheap"}
+{"domain": "paypa1-secure.com", "first_seen_days_ago": 7, "hosting_ip": "91.108.4.200", "has_mx": true, "has_ssl": false, "spf_record": "v=spf1 +all", "dkim_record": "", "dmarc_record": "v=DMARC1; p=none;", "registrar": "GoDaddy"}
+{"domain": "company-secure-login.online", "first_seen_days_ago": 1, "hosting_ip": "198.51.100.22", "has_mx": true, "has_ssl": true, "spf_record": "", "dkim_record": "", "dmarc_record": "", "registrar": "Namecheap"}
+{"domain": "github.com", "first_seen_days_ago": 5000, "hosting_ip": "140.82.121.4", "has_mx": true, "has_ssl": true, "spf_record": "v=spf1 include:github.com ~all", "dkim_record": "v=DKIM1", "dmarc_record": "v=DMARC1; p=reject;", "registrar": "MarkMonitor"}
+{"domain": "coinbase-kyc-verify.tk", "first_seen_days_ago": 2, "hosting_ip": "91.108.4.200", "has_mx": false, "has_ssl": false, "spf_record": "", "dkim_record": "", "dmarc_record": "", "registrar": "Freenom"}
