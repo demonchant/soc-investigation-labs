@@ -1,0 +1,14 @@
+{"timestamp": "2026-06-15T10:30:11.070323+00:00", "event_type": "auth", "status": "success", "username": "jsmith", "src_ip": "91.108.4.200", "host": "WS-05", "protocol": "RDP"}
+{"timestamp": "2026-06-15T10:31:11.070323+00:00", "process_name": "powershell.exe", "host": "WS-05", "user": "jsmith", "command_line": "powershell.exe -nop -w hidden -enc SQBFAFgA"}
+{"timestamp": "2026-06-15T10:32:11.070323+00:00", "process_name": "net.exe", "host": "WS-05", "user": "jsmith", "command_line": "net group \"domain admins\" /domain"}
+{"timestamp": "2026-06-15T10:33:11.070323+00:00", "process_name": "nltest.exe", "host": "WS-05", "user": "jsmith", "command_line": "nltest /dclist:corp.com"}
+{"timestamp": "2026-06-15T10:34:11.070323+00:00", "process_name": "mimikatz.exe", "host": "WS-05", "user": "jsmith", "command_line": "mimikatz sekurlsa::logonpasswords"}
+{"timestamp": "2026-06-15T10:35:11.070323+00:00", "event_type": "auth", "status": "success", "username": "svc_backup", "src_ip": "192.168.1.105", "dst_ip": "192.168.1.10", "host": "DC-01", "protocol": "SMB"}
+{"timestamp": "2026-06-15T10:36:11.070323+00:00", "process_name": "schtasks.exe", "host": "DC-01", "user": "svc_backup", "command_line": "schtasks /create /tn updater /tr powershell.exe /sc minute /ru system"}
+{"timestamp": "2026-06-15T10:37:11.070323+00:00", "process_name": "ntdsutil.exe", "host": "DC-01", "user": "svc_backup", "command_line": "ntdsutil.exe ac i ntds ifm create full C:\\temp"}
+{"timestamp": "2026-06-15T10:38:11.070323+00:00", "event_type": "auth", "status": "success", "src_ip": "192.168.1.10", "dst_ip": "192.168.1.20", "protocol": "SMB", "username": "svc_backup", "host": "FILE-SERVER"}
+{"timestamp": "2026-06-15T10:39:11.070323+00:00", "process_name": "7z.exe", "host": "FILE-SERVER", "user": "svc_backup", "command_line": "7z.exe a C:\\programdata\\backup.zip C:\\shares\\finance\\"}
+{"timestamp": "2026-06-15T10:40:11.070323+00:00", "event_type": "web_request", "domain": "mega.nz", "host": "FILE-SERVER", "username": "svc_backup", "bytes_uploaded": 500000000}
+{"timestamp": "2026-06-15T10:41:51.070323+00:00", "event_id": 1102, "host": "DC-01", "user": "svc_backup", "message": "Audit log cleared"}
+{"timestamp": "2026-06-15T10:43:31.070323+00:00", "process_name": "vssadmin.exe", "host": "FILE-SERVER", "user": "svc_backup", "command_line": "vssadmin delete shadows /all /quiet"}
+{"timestamp": "2026-06-15T10:45:11.070323+00:00", "event_type": "file", "host": "FILE-SERVER", "user": "svc_backup", "file_path": "C:\\shares\\finance\\budget.xlsx", "action": "rename", "new_extension": ".lockbit"}
