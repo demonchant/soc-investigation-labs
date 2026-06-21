@@ -1,0 +1,30 @@
+{
+  "deployed_rules": [
+    {"rule_id": "DET-001", "mitre_technique": "T1059.001", "days_since_last_review": 45},
+    {"rule_id": "DET-002", "mitre_technique": "T1490", "days_since_last_review": 30},
+    {"rule_id": "DET-003", "mitre_technique": "T1110", "days_since_last_review": 400},
+    {"rule_id": "DET-004", "mitre_technique": "T1071", "days_since_last_review": 60},
+    {"rule_id": "DET-005", "mitre_technique": "T1078", "days_since_last_review": 500},
+    {"rule_id": "DET-006", "mitre_technique": "T1003", "days_since_last_review": 90},
+    {"rule_id": "DET-007", "mitre_technique": "T1082", "days_since_last_review": 120},
+    {"rule_id": "DET-008", "mitre_technique": "T1486", "days_since_last_review": 15},
+    {"rule_id": "DET-009", "mitre_technique": "T1566", "days_since_last_review": 200},
+    {"rule_id": "DET-010", "mitre_technique": "T1053.005", "days_since_last_review": 70},
+    {"rule_id": "DET-011", "mitre_technique": "T1027", "days_since_last_review": 100},
+    {"rule_id": "DET-012", "mitre_technique": "T1021", "days_since_last_review": 50}
+  ],
+  "data_sources": [
+    {"name": "windows_security_eventlog", "active": true,  "retention_days": 180, "ingestion_latency_minutes": 5,
+     "last_event_received": "2024-06-15T12:00:00Z"},
+    {"name": "sysmon_process_creation",   "active": true,  "retention_days": 90,  "ingestion_latency_minutes": 3,
+     "last_event_received": "2024-06-15T12:00:00Z"},
+    {"name": "edr_telemetry",             "active": true,  "retention_days": 30,  "ingestion_latency_minutes": 2,
+     "last_event_received": "2024-06-15T12:00:00Z"},
+    {"name": "network_flow_netflow",      "active": false, "retention_days": 0,   "ingestion_latency_minutes": 0,
+     "last_event_received": "2024-02-01T00:00:00Z"},
+    {"name": "dns_query_logs",            "active": true,  "retention_days": 30,  "ingestion_latency_minutes": 25,
+     "last_event_received": "2024-06-15T12:00:00Z"},
+    {"name": "auth_idp_logs",             "active": true,  "retention_days": 365, "ingestion_latency_minutes": 1,
+     "last_event_received": "2024-06-15T12:00:00Z"}
+  ]
+}

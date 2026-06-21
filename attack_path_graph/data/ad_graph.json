@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {"name": "jsmith",          "type": "user", "is_privileged": false, "has_spn": false},
+    {"name": "helpdesk_svc",    "type": "user", "is_privileged": false, "has_spn": true},
+    {"name": "backup_admin",    "type": "user", "is_privileged": true,  "has_spn": true},
+    {"name": "domain_admin_01", "type": "user", "is_privileged": true,  "has_spn": false},
+    {"name": "WS-05",           "type": "computer"},
+    {"name": "HELPDESK-SRV",    "type": "computer"},
+    {"name": "FILE-SERVER",     "type": "computer"},
+    {"name": "DC-01",           "type": "computer"},
+    {"name": "Help Desk Operators", "type": "group"},
+    {"name": "Server Admins",       "type": "group"},
+    {"name": "Domain Admins",       "type": "group"},
+    {"name": "Backup Operators",    "type": "group"}
+  ],
+  "edges": [
+    {"source": "jsmith",         "target": "Help Desk Operators", "edge_type": "MemberOf"},
+    {"source": "Help Desk Operators", "target": "HELPDESK-SRV",   "edge_type": "AdminTo"},
+    {"source": "helpdesk_svc",   "target": "HELPDESK-SRV",        "edge_type": "HasSession"},
+    {"source": "HELPDESK-SRV",   "target": "helpdesk_svc",        "edge_type": "GenericAll"},
+    {"source": "helpdesk_svc",   "target": "Server Admins",       "edge_type": "MemberOf"},
+    {"source": "Server Admins",  "target": "FILE-SERVER",         "edge_type": "AdminTo"},
+    {"source": "backup_admin",   "target": "FILE-SERVER",         "edge_type": "HasSession"},
+    {"source": "FILE-SERVER",    "target": "backup_admin",        "edge_type": "GenericAll"},
+    {"source": "backup_admin",   "target": "Backup Operators",    "edge_type": "MemberOf"},
+    {"source": "Backup Operators","target": "DC-01",              "edge_type": "AdminTo"},
+    {"source": "domain_admin_01","target": "DC-01",               "edge_type": "HasSession"},
+    {"source": "DC-01",          "target": "Domain Admins",       "edge_type": "AdminTo"}
+  ]
+}

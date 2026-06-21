@@ -1,0 +1,76 @@
+{
+  "incidents": [
+    {
+      "incident_id": "INC-2024-0142",
+      "date": "2024-03-10",
+      "victim": "Finance Dept Workstation",
+      "iocs": {
+        "ips": ["91.108.4.200"],
+        "domains": ["update-svc.evil-c2.com"],
+        "hashes": ["c7c9d3a2b8f6e5d4a3b2c1d0e9f8a7b6aabbccddeeff001122"]
+      },
+      "mitre_techniques": ["T1566.001","T1059.001","T1003.001","T1071.001","T1486"],
+      "tooling_observed": ["cobalt strike", "mimikatz"]
+    },
+    {
+      "incident_id": "INC-2024-0158",
+      "date": "2024-03-22",
+      "victim": "HR Department Server",
+      "iocs": {
+        "ips": ["91.108.4.200"],
+        "domains": ["status-svc.evil-c2.com"],
+        "hashes": ["c7c9d3a2b8f6e5d4a3b2c1d0e9f8a7b6ffeeddccbbaa998877"]
+      },
+      "mitre_techniques": ["T1566.001","T1059.001","T1071.001","T1490","T1486"],
+      "tooling_observed": ["cobalt strike", "lockbit"]
+    },
+    {
+      "incident_id": "INC-2024-0201",
+      "date": "2024-04-15",
+      "victim": "DevOps Build Server",
+      "iocs": {
+        "ips": ["198.51.100.22"],
+        "domains": ["pkg-mirror.npm-cdn.xyz"],
+        "hashes": ["aa11bb22cc33dd44ee55ff66001122334455667788"]
+      },
+      "mitre_techniques": ["T1195.001","T1059.006","T1071.001"],
+      "tooling_observed": ["redline stealer"]
+    },
+    {
+      "incident_id": "INC-2024-0219",
+      "date": "2024-04-28",
+      "victim": "External Vendor Portal",
+      "iocs": {
+        "ips": ["45.33.32.156"],
+        "domains": ["portal-login-verify.online"],
+        "hashes": []
+      },
+      "mitre_techniques": ["T1110.004","T1566.002"],
+      "tooling_observed": ["metasploit"]
+    },
+    {
+      "incident_id": "INC-2024-0233",
+      "date": "2024-05-09",
+      "victim": "File Server",
+      "iocs": {
+        "ips": ["91.108.4.200"],
+        "domains": ["status-svc.evil-c2.com"],
+        "hashes": ["c7c9d3a2b8f6e5d4a3b2c1d0e9f8a7b6112233445566778899"]
+      },
+      "mitre_techniques": ["T1059.001","T1490","T1486","T1021.002"],
+      "tooling_observed": ["lockbit", "cobalt strike"]
+    },
+    {
+      "incident_id": "INC-2024-0247",
+      "date": "2024-05-18",
+      "victim": "Marketing Workstation",
+      "iocs": {
+        "ips": ["203.0.113.50"],
+        "domains": ["newsletter-tracker.com"],
+        "hashes": []
+      },
+      "mitre_techniques": ["T1566.001"],
+      "tooling_observed": []
+    }
+  ]
+}
