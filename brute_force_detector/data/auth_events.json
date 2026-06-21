@@ -1,0 +1,40 @@
+{
+  "auth_events": [
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400000},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400001},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400002},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400003},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400004},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400005},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400006},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400007},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "failure", "timestamp_epoch": 1718400008},
+    {"src_ip": "45.33.32.156", "username": "administrator", "service": "rdp", "status": "success", "timestamp_epoch": 1718400009},
+
+    {"src_ip": "103.21.244.0", "username": "john.smith",   "service": "ssh", "status": "failure", "timestamp_epoch": 1718401000},
+    {"src_ip": "103.21.244.0", "username": "jane.doe",     "service": "ssh", "status": "failure", "timestamp_epoch": 1718401008},
+    {"src_ip": "103.21.244.0", "username": "ceo",          "service": "ssh", "status": "failure", "timestamp_epoch": 1718401016},
+    {"src_ip": "103.21.244.0", "username": "finance",      "service": "ssh", "status": "failure", "timestamp_epoch": 1718401024},
+    {"src_ip": "103.21.244.0", "username": "hr",           "service": "ssh", "status": "failure", "timestamp_epoch": 1718401032},
+    {"src_ip": "103.21.244.0", "username": "devops",       "service": "ssh", "status": "failure", "timestamp_epoch": 1718401040},
+    {"src_ip": "103.21.244.0", "username": "admin",        "service": "ssh", "status": "failure", "timestamp_epoch": 1718401048},
+
+    {"src_ip": "198.51.100.1", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402000},
+    {"src_ip": "198.51.100.2", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402010},
+    {"src_ip": "198.51.100.3", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402020},
+    {"src_ip": "198.51.100.4", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402030},
+    {"src_ip": "198.51.100.5", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402040},
+    {"src_ip": "198.51.100.6", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402050},
+    {"src_ip": "198.51.100.7", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402060},
+    {"src_ip": "198.51.100.8", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402070},
+    {"src_ip": "198.51.100.9", "username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402080},
+    {"src_ip": "198.51.100.10","username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402090},
+    {"src_ip": "198.51.100.11","username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402100},
+    {"src_ip": "198.51.100.12","username": "svc_api",  "service": "web", "status": "failure", "timestamp_epoch": 1718402110},
+
+    {"src_ip": "192.168.1.50", "username": "alice",   "service": "ssh", "status": "success",  "timestamp_epoch": 1718403000},
+    {"src_ip": "192.168.1.51", "username": "bob",     "service": "ssh", "status": "success",  "timestamp_epoch": 1718403060},
+    {"src_ip": "192.168.1.52", "username": "carol",   "service": "ssh", "status": "failure",  "timestamp_epoch": 1718403120},
+    {"src_ip": "192.168.1.52", "username": "carol",   "service": "ssh", "status": "success",  "timestamp_epoch": 1718403180}
+  ]
+}

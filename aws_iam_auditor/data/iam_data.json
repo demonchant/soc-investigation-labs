@@ -1,0 +1,114 @@
+{
+  "users": [
+    {
+      "username": "john.smith",
+      "mfa_enabled": false,
+      "password_last_used_days": 120,
+      "access_keys": [
+        {"key_id": "AKIAIOSFODNN7EXAMPLE", "age_days": 180, "used_last_30_days": false}
+      ],
+      "attached_policies": ["AdministratorAccess"],
+      "inline_policies": ["custom-s3-policy"],
+      "groups": ["developers", "admin-team"]
+    },
+    {
+      "username": "jane.doe",
+      "mfa_enabled": true,
+      "password_last_used_days": 5,
+      "access_keys": [
+        {"key_id": "AKIAI44QH8DHBEXAMPLE", "age_days": 45, "used_last_30_days": true}
+      ],
+      "attached_policies": ["ReadOnlyAccess"],
+      "inline_policies": [],
+      "groups": ["analysts"]
+    },
+    {
+      "username": "svc-deploy",
+      "mfa_enabled": false,
+      "password_last_used_days": 0,
+      "access_keys": [
+        {"key_id": "AKIAIOSFODNN7SVCEX", "age_days": 400, "used_last_30_days": true}
+      ],
+      "attached_policies": ["PowerUserAccess"],
+      "inline_policies": [],
+      "groups": []
+    },
+    {
+      "username": "audit-reader",
+      "mfa_enabled": true,
+      "password_last_used_days": 2,
+      "access_keys": [],
+      "attached_policies": ["SecurityAudit", "ReadOnlyAccess"],
+      "inline_policies": [],
+      "groups": ["security-team"]
+    }
+  ],
+  "roles": [
+    {
+      "role_name": "ec2-prod-role",
+      "attached_policies": ["AdministratorAccess"],
+      "trust_policy": {"principals": ["ec2.amazonaws.com"]},
+      "max_session_duration_hours": 1,
+      "cross_account_access": false,
+      "external_id_required": false
+    },
+    {
+      "role_name": "cross-account-audit",
+      "attached_policies": ["ReadOnlyAccess"],
+      "trust_policy": {"principals": ["*"]},
+      "max_session_duration_hours": 24,
+      "cross_account_access": true,
+      "external_id_required": false
+    },
+    {
+      "role_name": "lambda-execution-role",
+      "attached_policies": ["AWSLambdaBasicExecutionRole"],
+      "trust_policy": {"principals": ["lambda.amazonaws.com"]},
+      "max_session_duration_hours": 1,
+      "cross_account_access": false,
+      "external_id_required": false
+    }
+  ],
+  "policies": [
+    {
+      "policy_name": "dev-overprivileged",
+      "statements": [
+        {
+          "effect": "Allow",
+          "actions": ["*"],
+          "resources": ["*"]
+        }
+      ]
+    },
+    {
+      "policy_name": "s3-team-policy",
+      "statements": [
+        {
+          "effect": "Allow",
+          "actions": ["s3:GetObject", "s3:PutObject"],
+          "resources": ["arn:aws:s3:::company-data-bucket/*"]
+        }
+      ]
+    },
+    {
+      "policy_name": "escalation-risk-policy",
+      "statements": [
+        {
+          "effect": "Allow",
+          "actions": ["iam:CreateAccessKey", "iam:AttachUserPolicy", "iam:PassRole"],
+          "resources": ["*"]
+        }
+      ]
+    },
+    {
+      "policy_name": "readonly-scoped",
+      "statements": [
+        {
+          "effect": "Allow",
+          "actions": ["ec2:Describe*", "s3:List*"],
+          "resources": ["*"]
+        }
+      ]
+    }
+  ]
+}

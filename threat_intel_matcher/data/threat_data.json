@@ -1,0 +1,26 @@
+{
+  "threat_feed": [
+    {"value": "185.220.101.47", "ioc_type": "ip",     "category": "tor_exit",  "confidence": 95, "first_seen": "2024-01-10"},
+    {"value": "91.108.4.200",   "ioc_type": "ip",     "category": "c2",        "confidence": 98, "first_seen": "2024-02-14"},
+    {"value": "45.33.32.156",   "ioc_type": "ip",     "category": "scanner",   "confidence": 80, "first_seen": "2023-11-01"},
+    {"value": "198.51.100.22",  "ioc_type": "ip",     "category": "botnet",    "confidence": 85, "first_seen": "2024-03-05"},
+    {"value": "evil-c2.example.com",    "ioc_type": "domain", "category": "c2",      "confidence": 99, "first_seen": "2024-01-20"},
+    {"value": "phishing-login.xyz",     "ioc_type": "domain", "category": "phishing","confidence": 92, "first_seen": "2024-04-01"},
+    {"value": "malware-drop.net",       "ioc_type": "domain", "category": "malware", "confidence": 97, "first_seen": "2024-02-28"},
+    {"value": "44d88612fea8a8f36de82e1278abb02f", "ioc_type": "hash", "category": "malware", "confidence": 100, "first_seen": "2024-01-05"},
+    {"value": "3395856ce81f2b7382dee72602f798b642f14d0", "ioc_type": "hash", "category": "malware", "confidence": 100, "first_seen": "2023-12-15"},
+    {"value": "badactor@phishing-login.xyz", "ioc_type": "email", "category": "phishing", "confidence": 90, "first_seen": "2024-04-02"}
+  ],
+  "log_events": [
+    {"event_id": "EVT-001", "source_ip": "192.168.1.105", "dest_ip": "91.108.4.200",    "url": "", "file_hash": "", "email_sender": ""},
+    {"event_id": "EVT-002", "source_ip": "192.168.1.200", "dest_ip": "8.8.8.8",         "url": "", "file_hash": "", "email_sender": ""},
+    {"event_id": "EVT-003", "source_ip": "10.0.0.55",     "dest_domain": "evil-c2.example.com", "url": "", "file_hash": "", "email_sender": ""},
+    {"event_id": "EVT-004", "source_ip": "10.0.0.88",     "dest_ip": "185.220.101.47",  "url": "", "file_hash": "", "email_sender": ""},
+    {"event_id": "EVT-005", "source_ip": "192.168.1.50",  "dest_ip": "1.1.1.1",         "url": "https://phishing-login.xyz/secure/login", "file_hash": "", "email_sender": ""},
+    {"event_id": "EVT-006", "source_ip": "192.168.1.77",  "dest_ip": "10.0.0.5",        "url": "", "file_hash": "44d88612fea8a8f36de82e1278abb02f", "email_sender": ""},
+    {"event_id": "EVT-007", "source_ip": "192.168.1.120", "dest_domain": "sub.malware-drop.net", "url": "", "file_hash": "", "email_sender": ""},
+    {"event_id": "EVT-008", "source_ip": "192.168.1.33",  "dest_ip": "198.51.100.22",   "url": "", "file_hash": "", "email_sender": ""},
+    {"event_id": "EVT-009", "source_ip": "0.0.0.0",       "dest_ip": "192.168.1.40",    "url": "", "file_hash": "", "email_sender": "badactor@phishing-login.xyz"},
+    {"event_id": "EVT-010", "source_ip": "192.168.1.15",  "dest_ip": "13.107.4.50",     "url": "https://microsoft.com/update", "file_hash": "", "email_sender": ""}
+  ]
+}

