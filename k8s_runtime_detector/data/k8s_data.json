@@ -1,0 +1,137 @@
+{
+  "pod_specs": [
+    {
+      "name": "crypto-miner-pod", "namespace": "default",
+      "security_context": {"seccomp_profile": null},
+      "containers": [
+        {
+          "name": "miner",
+          "security_context": {
+            "privileged": true, "run_as_user": 0,
+            "allow_privilege_escalation": true,
+            "add_capabilities": ["SYS_ADMIN","NET_ADMIN"]
+          },
+          "env": [
+            {"name": "POOL_PASSWORD",         "value": "s3cr3tminingpass"},
+            {"name": "AWS_SECRET_ACCESS_KEY",  "value": "wJalrXUtnFEMI/K7MDENGbPxRfiCYEXAMPLE"}
+          ]
+        }
+      ],
+      "volumes": [
+        {"name": "docker-sock", "host_path": {"path": "/var/run/docker.sock"}},
+        {"name": "host-proc",   "host_path": {"path": "/proc"}}
+      ]
+    },
+    {
+      "name": "webapp-frontend", "namespace": "production",
+      "security_context": {"seccomp_profile": "RuntimeDefault"},
+      "containers": [
+        {
+          "name": "nginx",
+          "security_context": {
+            "privileged": false, "run_as_user": 1000,
+            "allow_privilege_escalation": false,
+            "add_capabilities": []
+          },
+          "env": [{"name": "APP_ENV", "value": "production"}]
+        }
+      ],
+      "volumes": []
+    },
+    {
+      "name": "debug-pod", "namespace": "kube-system",
+      "security_context": {"seccomp_profile": null},
+      "containers": [
+        {
+          "name": "debugger",
+          "security_context": {
+            "privileged": false, "run_as_user": 0,
+            "allow_privilege_escalation": true,
+            "add_capabilities": ["SYS_PTRACE","SYS_MODULE"]
+          },
+          "env": [
+            {"name": "DB_PASSWORD", "value": "admin123"},
+            {"name": "NORMAL_VAR",  "value": "ok"}
+          ]
+        }
+      ],
+      "volumes": [
+        {"name": "k8s-conf", "host_path": {"path": "/etc/kubernetes"}}
+      ]
+    }
+  ],
+  "audit_log": [
+    {
+      "verb": "exec", "resource": "pods", "namespace": "production",
+      "object_name": "webapp-7d9f8b-xkq2p",
+      "user": {"username": "attacker@external.com"},
+      "user_agent": "kubectl/v1.28.0"
+    },
+    {
+      "verb": "get", "resource": "secrets", "namespace": "production",
+      "object_name": "db-credentials",
+      "user": {"username": "system:serviceaccount:default:backend-sa"},
+      "user_agent": "python-requests/2.28"
+    },
+    {
+      "verb": "list", "resource": "secrets", "namespace": "kube-system",
+      "object_name": "",
+      "user": {"username": "system:serviceaccount:default:backend-sa"},
+      "user_agent": "python-requests/2.28"
+    },
+    {
+      "verb": "get", "resource": "secrets", "namespace": "staging",
+      "object_name": "api-keys",
+      "user": {"username": "system:serviceaccount:default:backend-sa"},
+      "user_agent": "python-requests/2.28"
+    },
+    {
+      "verb": "list", "resource": "secrets", "namespace": "default",
+      "object_name": "",
+      "user": {"username": "system:serviceaccount:default:backend-sa"},
+      "user_agent": "python-requests/2.28"
+    },
+    {
+      "verb": "portforward", "resource": "pods", "namespace": "database",
+      "object_name": "postgres-0",
+      "user": {"username": "devops-lead"},
+      "user_agent": "kubectl/v1.28.0"
+    },
+    {
+      "verb": "create", "resource": "clusterrolebindings", "namespace": "",
+      "object_name": "attacker-cluster-admin",
+      "user": {"username": "jsmith"},
+      "user_agent": "kubectl/v1.28.0"
+    },
+    {
+      "verb": "list", "resource": "pods", "namespace": "default",
+      "object_name": "",
+      "user": {"username": "readonly-user"},
+      "user_agent": "kubectl/v1.28.0"
+    },
+    {
+      "verb": "get", "resource": "secrets", "namespace": "kube-system",
+      "object_name": "bootstrap-token",
+      "user": {"username": "system:serviceaccount:default:backend-sa"},
+      "user_agent": "python-requests/2.28"
+    },
+    {
+      "verb": "list", "resource": "secrets", "namespace": "monitoring",
+      "object_name": "",
+      "user": {"username": "system:serviceaccount:default:backend-sa"},
+      "user_agent": "python-requests/2.28"
+    },
+    {
+      "verb": "get", "resource": "configmaps", "namespace": "production",
+      "object_name": "app-config",
+      "user": {"username": "system:serviceaccount:default:backend-sa"},
+      "user_agent": "python-requests/2.28"
+    },
+    {
+      "verb": "list", "resource": "pods", "namespace": "production",
+      "object_name": "",
+      "user": {"username": "system:serviceaccount:default:backend-sa"},
+      "user_agent": "python-requests/2.28"
+    }
+  ]
+}

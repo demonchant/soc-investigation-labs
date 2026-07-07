@@ -1,0 +1,71 @@
+{
+  "assets": [
+    {
+      "hostname": "vpn.company.com", "ip": "203.0.113.10", "owner": "IT-Network",
+      "open_ports": [22, 443, 3389],
+      "ssl_cert": {"common_name": "vpn.company.com", "days_until_expiry": -5, "self_signed": false},
+      "service_banner": "OpenSSH_8.9",
+      "last_scanned_days_ago": 7
+    },
+    {
+      "hostname": "dev-test-old.company.com", "ip": "203.0.113.20", "owner": "",
+      "open_ports": [22, 8080, 6379, 9200],
+      "ssl_cert": {"common_name": "dev-test-old.company.com", "days_until_expiry": 8, "self_signed": true},
+      "service_banner": "nginx welcome to nginx",
+      "last_scanned_days_ago": 180
+    },
+    {
+      "hostname": "jenkins.company.com", "ip": "203.0.113.30", "owner": "DevOps",
+      "open_ports": [443, 8080],
+      "ssl_cert": {"common_name": "jenkins.company.com", "days_until_expiry": 25, "self_signed": false},
+      "service_banner": "jenkins version 2.414",
+      "last_scanned_days_ago": 14
+    },
+    {
+      "hostname": "db-staging.company.com", "ip": "203.0.113.40", "owner": "Backend-Team",
+      "open_ports": [22, 3306, 5432],
+      "ssl_cert": {"common_name": "db-staging.company.com", "days_until_expiry": 90, "self_signed": false},
+      "service_banner": "MySQL 8.0",
+      "last_scanned_days_ago": 30
+    },
+    {
+      "hostname": "api.company.com", "ip": "203.0.113.50", "owner": "Platform-Team",
+      "open_ports": [443],
+      "ssl_cert": {"common_name": "api.company.com", "days_until_expiry": 120, "self_signed": false},
+      "service_banner": "nginx",
+      "last_scanned_days_ago": 3
+    },
+    {
+      "hostname": "backup-legacy.company.com", "ip": "203.0.113.60", "owner": "unknown",
+      "open_ports": [21, 22, 445, 3389],
+      "ssl_cert": {},
+      "service_banner": "Microsoft FTP Service",
+      "last_scanned_days_ago": 365
+    },
+    {
+      "hostname": "grafana.company.com", "ip": "203.0.113.70", "owner": "SRE-Team",
+      "open_ports": [443, 3000],
+      "ssl_cert": {"common_name": "grafana.company.com", "days_until_expiry": 60, "self_signed": false},
+      "service_banner": "grafana v10.0",
+      "last_scanned_days_ago": 10
+    }
+  ],
+  "dns_records": [
+    {
+      "name": "old-blog.company.com", "type": "CNAME",
+      "value": "company.github.io", "target_resolves": false
+    },
+    {
+      "name": "assets.company.com", "type": "CNAME",
+      "value": "company-prod.s3.amazonaws.com", "target_resolves": false
+    },
+    {
+      "name": "api.company.com", "type": "A",
+      "value": "203.0.113.50", "in_asset_inventory": true
+    },
+    {
+      "name": "shadow-app.company.com", "type": "A",
+      "value": "198.51.100.99", "in_asset_inventory": false
+    }
+  ]
+}

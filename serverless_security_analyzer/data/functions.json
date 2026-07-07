@@ -1,0 +1,117 @@
+{
+  "functions": [
+    {
+      "function_name": "payment-processor",
+      "runtime": "python3.11",
+      "iam_role": {
+        "role_name": "payment-processor-role",
+        "actions": ["*"],
+        "resources": ["*"]
+      },
+      "environment_variables": {
+        "STRIPE_SECRET_KEY": "sk_live_4eC39HqLyjWDarjtT1zdp7dc",
+        "DATABASE_URL": "postgresql://admin:password123@db.internal:5432/payments",
+        "APP_ENV": "production"
+      },
+      "event_sources": [
+        {"type": "apigateway", "authenticated": false, "endpoint": "/api/v1/charge"}
+      ],
+      "config": {
+        "timeout_seconds": 900,
+        "memory_mb": 512,
+        "reserved_concurrency": -1,
+        "cloudwatch_logs_enabled": false,
+        "tracing_enabled": false
+      },
+      "layers": [
+        {"arn": "arn:aws:lambda:us-east-1:999999999:layer:unknown-utils:1",
+         "name": "unknown-utils", "verified_owner": false}
+      ],
+      "vpc_config": {},
+      "published_versions": false,
+      "aliases": []
+    },
+    {
+      "function_name": "user-auth-trigger",
+      "runtime": "nodejs18.x",
+      "iam_role": {
+        "role_name": "shared-execution-role",
+        "actions": ["secretsmanager:GetSecretValue", "dynamodb:GetItem", "dynamodb:PutItem"],
+        "resources": ["arn:aws:dynamodb:us-east-1:123456789:table/users"]
+      },
+      "environment_variables": {
+        "USER_TABLE": "users",
+        "REGION": "us-east-1"
+      },
+      "event_sources": [
+        {"type": "cognito", "authenticated": true, "trigger": "PreAuthentication"}
+      ],
+      "config": {
+        "timeout_seconds": 5,
+        "memory_mb": 128,
+        "reserved_concurrency": 100,
+        "cloudwatch_logs_enabled": true,
+        "tracing_enabled": true
+      },
+      "layers": [],
+      "vpc_config": {"vpc_id": "vpc-0a1b2c3d"},
+      "published_versions": true,
+      "aliases": ["live", "dev"]
+    },
+    {
+      "function_name": "log-archiver",
+      "runtime": "python3.6",
+      "iam_role": {
+        "role_name": "shared-execution-role",
+        "actions": ["s3:*", "logs:*", "iam:PassRole"],
+        "resources": ["*"]
+      },
+      "environment_variables": {
+        "ARCHIVE_BUCKET": "company-log-archive",
+        "AWS_SECRET_ACCESS_KEY": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+        "NOTIFY_EMAIL": "ops@company.com"
+      },
+      "event_sources": [
+        {"type": "s3", "authenticated": true, "bucket": "company-raw-logs"}
+      ],
+      "config": {
+        "timeout_seconds": 300,
+        "memory_mb": 256,
+        "reserved_concurrency": 0,
+        "cloudwatch_logs_enabled": true,
+        "tracing_enabled": false
+      },
+      "layers": [],
+      "vpc_config": {},
+      "published_versions": false,
+      "aliases": []
+    },
+    {
+      "function_name": "email-sender",
+      "runtime": "python3.11",
+      "iam_role": {
+        "role_name": "email-sender-role",
+        "actions": ["ses:SendEmail", "ses:SendRawEmail"],
+        "resources": ["arn:aws:ses:us-east-1:123456789:identity/company.com"]
+      },
+      "environment_variables": {
+        "FROM_ADDRESS": "noreply@company.com",
+        "TEMPLATE_BUCKET": "company-email-templates"
+      },
+      "event_sources": [
+        {"type": "sqs", "authenticated": true, "queue": "email-queue"}
+      ],
+      "config": {
+        "timeout_seconds": 30,
+        "memory_mb": 128,
+        "reserved_concurrency": 50,
+        "cloudwatch_logs_enabled": true,
+        "tracing_enabled": true
+      },
+      "layers": [],
+      "vpc_config": {"vpc_id": "vpc-0a1b2c3d"},
+      "published_versions": true,
+      "aliases": ["live"]
+    }
+  ]
+}
