@@ -1,0 +1,52 @@
+{
+  "assessment_period": "July 2024",
+  "historical_scores": [
+    {"period": "April 2024", "overall_score": 58},
+    {"period": "May 2024",   "overall_score": 61},
+    {"period": "June 2024",  "overall_score": 67}
+  ],
+  "tool_results": {
+    "identity": [
+      {"title": "AS-REP Roastable Account: helpdesk.user",       "severity": "critical"},
+      {"title": "DCSync Rights on svc_backup",                   "severity": "critical"},
+      {"title": "Unconstrained Delegation on FILE-SERVER",       "severity": "critical"},
+      {"title": "No Account Lockout in Default Domain Policy",   "severity": "critical"},
+      {"title": "Stale Enabled Account: old.contractor (210d)", "severity": "high"},
+      {"title": "Domain Admins Overpopulated (8 members)",      "severity": "high"},
+      {"title": "Nested Groups in Domain Admins",               "severity": "high"},
+      {"title": "Password Never Expires: svc_backup",           "severity": "medium"}
+    ],
+    "network": [
+      {"title": "External Traffic Spike 159x: 192.168.1.10",     "severity": "critical"},
+      {"title": "RDP (:3389) Exposed on vpn.company.com",        "severity": "critical"},
+      {"title": "Dangling DNS: old-blog → github.io",            "severity": "critical"},
+      {"title": "Telnet Protocol Detected: 192.168.1.20",        "severity": "high"},
+      {"title": "Port Anomaly: 12 unique ports 192.168.1.30",    "severity": "high"},
+      {"title": "New External Destination 850KB: 203.0.113.99",  "severity": "medium"}
+    ],
+    "endpoint": [
+      {"title": "vssadmin.exe delete shadows on WS-07",          "severity": "critical"},
+      {"title": "Unsigned Executable in C:\\Temp: beacon.exe",   "severity": "critical"},
+      {"title": "Encoded PowerShell (-enc) on WS-05",            "severity": "high"},
+      {"title": "LOLBas: certutil.exe downloading from internet", "severity": "high"},
+      {"title": "Double Extension: invoice.pdf.exe",             "severity": "high"},
+      {"title": "No Seccomp Profile on debug-pod",              "severity": "medium"}
+    ],
+    "cloud": [
+      {"title": "Lambda payment-processor: full admin role",     "severity": "critical"},
+      {"title": "Hardcoded STRIPE_SECRET_KEY in Lambda env",     "severity": "critical"},
+      {"title": "CloudWatch Logging Disabled: payment-processor","severity": "critical"},
+      {"title": "IAM User john.smith: MFA not enabled",         "severity": "critical"},
+      {"title": "Deprecated Runtime python3.6: log-archiver",   "severity": "high"},
+      {"title": "Shared IAM Role Across 2 Lambda Functions",    "severity": "medium"}
+    ],
+    "detection": [
+      {"title": "DET-001: 93% FP rate — 2.8h/day wasted",       "severity": "critical"},
+      {"title": "Zero ATT&CK coverage: Exfiltration tactic",    "severity": "critical"},
+      {"title": "Zero ATT&CK coverage: Collection tactic",      "severity": "critical"},
+      {"title": "DET-006: 78% FP rate — high noise",            "severity": "high"},
+      {"title": "Analyst capacity at 83% — burnout risk",       "severity": "high"},
+      {"title": "DET-004: High MTTD — 90 min avg",             "severity": "medium"}
+    ]
+  }
+}

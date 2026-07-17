@@ -1,0 +1,92 @@
+{
+  "users": [
+    {
+      "samaccountname": "jsmith", "enabled": true,
+      "days_since_last_logon": 5, "days_since_password_change": 45,
+      "password_never_expires": false, "no_preauthentication_required": false,
+      "service_principal_names": [], "admincount": 0,
+      "member_of": ["Domain Users","Finance Team"]
+    },
+    {
+      "samaccountname": "old.contractor", "enabled": true,
+      "days_since_last_logon": 210, "days_since_password_change": 210,
+      "password_never_expires": false, "no_preauthentication_required": false,
+      "service_principal_names": [], "admincount": 0,
+      "member_of": ["Domain Users"]
+    },
+    {
+      "samaccountname": "svc_backup", "enabled": true,
+      "days_since_last_logon": 2, "days_since_password_change": 730,
+      "password_never_expires": true, "no_preauthentication_required": false,
+      "service_principal_names": ["MSSQLSvc/sqlserver01.corp.com:1433"],
+      "admincount": 1, "member_of": ["Backup Operators"]
+    },
+    {
+      "samaccountname": "helpdesk.user", "enabled": true,
+      "days_since_last_logon": 1, "days_since_password_change": 30,
+      "password_never_expires": false, "no_preauthentication_required": true,
+      "service_principal_names": [], "admincount": 0,
+      "member_of": ["Help Desk","Domain Users"]
+    },
+    {
+      "samaccountname": "retired.admin", "enabled": true,
+      "days_since_last_logon": 180, "days_since_password_change": 180,
+      "password_never_expires": true, "no_preauthentication_required": false,
+      "service_principal_names": [], "admincount": 1,
+      "member_of": ["Domain Users"]
+    }
+  ],
+  "computers": [
+    {
+      "name": "DC-01", "enabled": true, "is_domain_controller": true,
+      "unconstrained_delegation": true,
+      "days_since_last_logon": 0, "operating_system": "Windows Server 2019"
+    },
+    {
+      "name": "FILE-SERVER", "enabled": true, "is_domain_controller": false,
+      "unconstrained_delegation": true,
+      "days_since_last_logon": 1, "operating_system": "Windows Server 2016"
+    },
+    {
+      "name": "OLD-WS", "enabled": true, "is_domain_controller": false,
+      "unconstrained_delegation": false,
+      "days_since_last_logon": 300, "operating_system": "Windows 7 Enterprise"
+    }
+  ],
+  "groups": [
+    {
+      "name": "Domain Admins",
+      "members": [
+        {"name":"Administrator","type":"user"},{"name":"jdoe.admin","type":"user"},
+        {"name":"svc_deploy","type":"user"},{"name":"backup.admin","type":"user"},
+        {"name":"cto.user","type":"user"},{"name":"it.lead","type":"user"},
+        {"name":"DevOps Admins","type":"group"},{"name":"Cloud Team","type":"group"}
+      ]
+    }
+  ],
+  "password_policies": [
+    {
+      "name": "Default Domain Policy",
+      "min_password_length": 8, "max_password_age_days": 90,
+      "complexity_enabled": true, "lockout_threshold": 0,
+      "password_history_count": 5
+    }
+  ],
+  "domain_acls": [
+    {
+      "principal": "svc_backup", "principal_is_dc": false,
+      "target": "DC=corp,DC=com", "target_type": "domain",
+      "rights": ["DS-Replication-Get-Changes","DS-Replication-Get-Changes-All"]
+    },
+    {
+      "principal": "helpdesk_group", "principal_is_dc": false,
+      "target": "DC=corp,DC=com", "target_type": "domain",
+      "rights": ["WriteDACL"]
+    },
+    {
+      "principal": "DC-01$", "principal_is_dc": true,
+      "target": "DC=corp,DC=com", "target_type": "domain",
+      "rights": ["DS-Replication-Get-Changes","DS-Replication-Get-Changes-All"]
+    }
+  ]
+}

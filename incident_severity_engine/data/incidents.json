@@ -1,0 +1,70 @@
+{
+  "incidents": [
+    {
+      "incident_id": "INC-2024-0401",
+      "title": "Ransomware on Domain Controller",
+      "asset_tier": "tier0", "kill_chain_phase": "impact",
+      "data_sensitivity": "regulated", "affected_assets_count": 45,
+      "attacker_capability": "advanced", "confidence": "confirmed",
+      "outside_hours": true, "incident_ongoing": true,
+      "executive_involved": true, "regulatory_scope": true,
+      "media_risk": true, "sla_breach_risk": true,
+      "analyst_assigned_severity": "high"
+    },
+    {
+      "incident_id": "INC-2024-0402",
+      "title": "Credential Stuffing on VPN",
+      "asset_tier": "tier2", "kill_chain_phase": "initial_access",
+      "data_sensitivity": "internal", "affected_assets_count": 1,
+      "attacker_capability": "opportunistic", "confidence": "confirmed",
+      "outside_hours": false, "incident_ongoing": false,
+      "executive_involved": false, "regulatory_scope": false,
+      "media_risk": false, "sla_breach_risk": false,
+      "analyst_assigned_severity": "high"
+    },
+    {
+      "incident_id": "INC-2024-0403",
+      "title": "Malware on Finance Workstation",
+      "asset_tier": "tier3", "kill_chain_phase": "execution",
+      "data_sensitivity": "financial", "affected_assets_count": 1,
+      "attacker_capability": "competent", "confidence": "suspected",
+      "outside_hours": true, "incident_ongoing": true,
+      "executive_involved": false, "regulatory_scope": true,
+      "media_risk": false, "sla_breach_risk": false,
+      "analyst_assigned_severity": "low"
+    },
+    {
+      "incident_id": "INC-2024-0404",
+      "title": "Port Scan from External IP",
+      "asset_tier": "tier3", "kill_chain_phase": "reconnaissance",
+      "data_sensitivity": "none", "affected_assets_count": 1,
+      "attacker_capability": "script_kiddie", "confidence": "confirmed",
+      "outside_hours": false, "incident_ongoing": false,
+      "executive_involved": false, "regulatory_scope": false,
+      "media_risk": false, "sla_breach_risk": false,
+      "analyst_assigned_severity": "medium"
+    },
+    {
+      "incident_id": "INC-2024-0405",
+      "title": "Lateral Movement to ERP System",
+      "asset_tier": "tier1", "kill_chain_phase": "lateral_movement",
+      "data_sensitivity": "financial", "affected_assets_count": 8,
+      "attacker_capability": "advanced", "confidence": "suspected",
+      "outside_hours": true, "incident_ongoing": true,
+      "executive_involved": false, "regulatory_scope": true,
+      "media_risk": false, "sla_breach_risk": true,
+      "analyst_assigned_severity": "medium"
+    },
+    {
+      "incident_id": "INC-2024-0406",
+      "title": "Suspicious PowerShell on Dev Box",
+      "asset_tier": "tier4", "kill_chain_phase": "execution",
+      "data_sensitivity": "internal", "affected_assets_count": 1,
+      "attacker_capability": "opportunistic", "confidence": "possible",
+      "outside_hours": false, "incident_ongoing": false,
+      "executive_involved": false, "regulatory_scope": false,
+      "media_risk": false, "sla_breach_risk": false,
+      "analyst_assigned_severity": "high"
+    }
+  ]
+}

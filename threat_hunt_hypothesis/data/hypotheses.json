@@ -1,0 +1,74 @@
+{
+  "available_data_sources": [
+    "windows_security_eventlog","sysmon_event_1","sysmon_event_3",
+    "edr_telemetry","network_flow","proxy_logs","auth_logs","dns_logs"
+  ],
+  "threat_intel_techniques": ["T1059.001","T1021.002","T1486","T1558.003"],
+  "hypotheses": [
+    {
+      "hypothesis_id": "HYP-001",
+      "title": "PowerShell Fileless Malware on Endpoints",
+      "mitre_technique": "T1059.001",
+      "priority": "high",
+      "status": "pending",
+      "data_sources": ["sysmon_event_1","edr_telemetry"],
+      "confirmation_criteria": "powershell.exe with -enc flag, base64 payload, spawned from Office or browser",
+      "refutation_criteria": "All encoded PS traces to documented IT automation with approved hashes",
+      "expected_artifacts": ["process_command_line","parent_process_name"],
+      "false_positive_notes": "IT team uses encoded PS for deployment — cross-reference against approved accounts",
+      "last_executed_days_ago": 0
+    },
+    {
+      "hypothesis_id": "HYP-002",
+      "title": "Lateral Movement via SMB",
+      "mitre_technique": "T1021.002",
+      "priority": "high",
+      "status": "in_progress",
+      "data_sources": ["windows_security_eventlog","network_flow"],
+      "confirmation_criteria": "Event ID 4624 Type 3 logons between workstations outside business hours",
+      "refutation_criteria": "All W2W authentications correlate with documented IT activities",
+      "expected_artifacts": ["event_id_4624","logon_type_3","src_workstation","dst_workstation"],
+      "false_positive_notes": "Backup agents create legitimate W2W auth — allowlist known service accounts",
+      "last_executed_days_ago": 45
+    },
+    {
+      "hypothesis_id": "HYP-003",
+      "title": "Data Staging Before Exfil",
+      "mitre_technique": "T1074.001",
+      "priority": "medium",
+      "status": "pending",
+      "data_sources": [],
+      "confirmation_criteria": "",
+      "refutation_criteria": "",
+      "expected_artifacts": [],
+      "false_positive_notes": "",
+      "last_executed_days_ago": 0
+    },
+    {
+      "hypothesis_id": "HYP-004",
+      "title": "Kerberoasting Service Account Theft",
+      "mitre_technique": "T1558.003",
+      "priority": "critical",
+      "status": "pending",
+      "data_sources": ["windows_security_eventlog"],
+      "confirmation_criteria": "Multiple Event ID 4769 with etype 0x17 from single non-service account in short window",
+      "refutation_criteria": "All RC4 ticket requests from documented legacy apps requiring RC4 compatibility",
+      "expected_artifacts": ["event_id_4769","encryption_type_0x17","requesting_account"],
+      "false_positive_notes": "Legacy applications may request RC4 — document all known legacy systems",
+      "last_executed_days_ago": 120
+    },
+    {
+      "hypothesis_id": "HYP-005",
+      "title": "DNS-Based C2 Tunneling",
+      "mitre_technique": "T1071.004",
+      "priority": "high",
+      "status": "refuted",
+      "data_sources": ["dns_logs","network_flow"],
+      "confirmation_criteria": "Apex domains with >20 unique high-entropy subdomains, NXDOMAIN ratio >60%",
+      "refutation_criteria": "All high-entropy DNS queries trace to CDN or update services on allowlist",
+      "expected_artifacts": ["dns_query_subdomain_entropy","nxdomain_ratio"],
+      "false_positive_notes": "CDN providers use long subdomains — maintain apex domain allowlist",
+      "last_executed_days_ago": 14
+    }
+  ]
+}
