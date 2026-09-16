@@ -1,0 +1,12 @@
+[
+  {"timestamp":"2026-09-15T08:00:00Z","event_type":"mfa_challenge","user":"finance.admin@example.com","result":"denied","source_ip":"198.51.100.40","country":"NG"},
+  {"timestamp":"2026-09-15T08:01:00Z","event_type":"mfa_challenge","user":"finance.admin@example.com","result":"timeout","source_ip":"198.51.100.40","country":"NG"},
+  {"timestamp":"2026-09-15T08:02:00Z","event_type":"mfa_challenge","user":"finance.admin@example.com","result":"denied","source_ip":"198.51.100.40","country":"NG"},
+  {"timestamp":"2026-09-15T08:03:00Z","event_type":"mfa_challenge","user":"finance.admin@example.com","result":"denied","source_ip":"198.51.100.40","country":"NG"},
+  {"timestamp":"2026-09-15T08:04:00Z","event_type":"mfa_challenge","user":"finance.admin@example.com","result":"denied","source_ip":"198.51.100.40","country":"NG"},
+  {"timestamp":"2026-09-15T08:05:00Z","event_type":"mfa_challenge","user":"finance.admin@example.com","result":"approved","source_ip":"198.51.100.40","country":"NG"},
+  {"timestamp":"2026-09-15T09:00:00Z","event_type":"oauth_consent","user":"analyst@example.com","application":"Cloud Document Helper","publisher_verified":false,"scopes":["Mail.ReadWrite","offline_access"]},
+  {"timestamp":"2026-09-15T10:00:00Z","event_type":"authentication","user":"service@example.com","protocol":"legacy","result":"success","source_ip":"203.0.113.8","country":"RU"},
+  {"timestamp":"2026-09-15T11:00:00Z","event_type":"token_use","user":"executive@example.com","token_id":"tok_91","source_ip":"192.0.2.10","country":"GB"},
+  {"timestamp":"2026-09-15T11:08:00Z","event_type":"token_use","user":"executive@example.com","token_id":"tok_91","source_ip":"203.0.113.90","country":"CN"}
+]

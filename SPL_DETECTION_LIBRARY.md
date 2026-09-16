@@ -1,12 +1,12 @@
 # Splunk SPL Detection Library
-## 10 Production-Ready Detection Queries | MITRE ATT&CK Mapped
+## 10 Lab Validated Detection Queries | MITRE ATT&CK Mapped
 ### By Oladapo Damilola (Wizardskull) | SOC Analyst | github.com/demonchant
 
 ---
 
 ## WHAT THIS LIBRARY IS
 
-This is a collection of 10 production-ready Splunk SPL detection queries covering
+This is a collection of 10 lab validated Splunk SPL detection queries covering
 the most critical attack techniques a SOC analyst encounters daily. Each query is:
 
 - Mapped to a specific MITRE ATT&CK technique

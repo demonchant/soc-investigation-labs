@@ -1,3 +1,4 @@
+import ast
 import re, logging
 from collections import defaultdict
 logger = logging.getLogger(__name__)
@@ -11,6 +12,33 @@ MITRE = {
 
 REQUIRED_FIELDS = {"rule_id", "title", "detection", "condition", "mitre_technique", "level"}
 VALID_LEVELS = {"critical", "high", "medium", "low", "informational"}
+
+
+def evaluate_boolean_condition(condition, results):
+    """Evaluate a small boolean expression without executing Python code."""
+    if not condition or not condition.strip():
+        raise ValueError("condition cannot be empty")
+
+    tree = ast.parse(condition, mode="eval")
+
+    def visit(node):
+        if isinstance(node, ast.Expression):
+            return visit(node.body)
+        if isinstance(node, ast.Name):
+            if node.id not in results:
+                raise ValueError("unknown selection '{}'".format(node.id))
+            return bool(results[node.id])
+        if isinstance(node, ast.Constant) and isinstance(node.value, bool):
+            return node.value
+        if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
+            return not visit(node.operand)
+        if isinstance(node, ast.BoolOp) and isinstance(node.op, ast.And):
+            return all(visit(value) for value in node.values)
+        if isinstance(node, ast.BoolOp) and isinstance(node.op, ast.Or):
+            return any(visit(value) for value in node.values)
+        raise ValueError("unsupported condition expression")
+
+    return visit(tree)
 
 class DetectionPipeline:
     """
@@ -65,6 +93,13 @@ class DetectionPipeline:
                     errors.append("selection '{}' uses bare equality on '{}' — consider contains/endswith".format(
                         sel_name, bare_fields[0]))
 
+        condition = rule.get("condition", "")
+        if detection:
+            try:
+                evaluate_boolean_condition(condition, {name: False for name in detection})
+            except (SyntaxError, ValueError) as exc:
+                errors.append("invalid condition: {}".format(exc))
+
         mitre = rule.get("mitre_technique", "")
         if mitre and not re.match(r"^T\d{4}(\.\d{3})?$", mitre):
             errors.append("malformed MITRE technique ID: '{}'".format(mitre))
@@ -103,13 +138,7 @@ class DetectionPipeline:
                     match = False
                     break
             results[sel_name] = match
-        cond = condition.lower()
-        for name, res in results.items():
-            cond = cond.replace(name.lower(), str(res))
-        try:
-            return eval(cond)
-        except Exception:
-            return any(results.values())
+        return evaluate_boolean_condition(condition, results)
 
     def _test(self, rule, corpus):
         rid = rule["rule_id"]

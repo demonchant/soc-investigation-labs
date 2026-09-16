@@ -93,5 +93,14 @@ def generate_data():
 
     print(f"Generated {len(events)} events → sample_netflow.ndjson")
 
+def _configure_console():
+    """Keep Unicode reports readable on Windows and redirected terminals."""
+    import sys
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
+
 if __name__ == "__main__":
+    _configure_console()
     generate_data()

@@ -1,0 +1,11 @@
+[
+  {"timestamp":"2026-09-16T07:00:00Z","event_type":"sign_in","user":"cfo@example.com","risk":"high","source_ip":"203.0.113.55","country":"RU","device":"unknown"},
+  {"timestamp":"2026-09-16T07:08:00Z","event_type":"recovery_method_changed","user":"cfo@example.com","method":"attacker phone"},
+  {"timestamp":"2026-09-16T07:14:00Z","event_type":"external_forwarding_created","user":"cfo@example.com","target":"archive@external.example"},
+  {"timestamp":"2026-09-16T07:20:00Z","event_type":"hidden_inbox_rule_created","user":"cfo@example.com","rule":"delete security alerts"},
+  {"timestamp":"2026-09-16T09:00:00Z","event_type":"sign_in","user":"admin@example.com","risk":"high","source_ip":"198.51.100.20","country":"US","device":"unknown"},
+  {"timestamp":"2026-09-16T09:11:00Z","event_type":"admin_role_assigned","user":"admin@example.com","target":"contractor@example.com","role":"global administrator"},
+  {"timestamp":"2026-09-16T09:17:00Z","event_type":"audit_logging_disabled","user":"admin@example.com","service":"crm"},
+  {"timestamp":"2026-09-16T10:00:00Z","event_type":"sign_in","user":"analyst@example.com","risk":"low","source_ip":"192.0.2.4","country":"GB","device":"managed"},
+  {"timestamp":"2026-09-16T10:30:00Z","event_type":"file_view","user":"analyst@example.com","file":"quarterly_report.pdf"}
+]

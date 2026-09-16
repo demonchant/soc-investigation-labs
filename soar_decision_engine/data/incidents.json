@@ -1,0 +1,36 @@
+{
+  "incidents": [
+    {
+      "incident_id": "INC-2024-0301",
+      "playbook_type": "credential_compromise",
+      "detected_epoch": 1718400000,
+      "current_epoch":  1718403600,
+      "completed_steps": ["CC-01","CC-02","CC-03"],
+      "context": {"username": "jsmith", "trigger": "impossible_travel"}
+    },
+    {
+      "incident_id": "INC-2024-0302",
+      "playbook_type": "malware_on_endpoint",
+      "detected_epoch": 1718400000,
+      "current_epoch":  1718400600,
+      "completed_steps": ["ME-01","ME-02","ME-03","ME-04"],
+      "context": {"host": "WS-07", "c2_detected": true}
+    },
+    {
+      "incident_id": "INC-2024-0303",
+      "playbook_type": "phishing_email",
+      "detected_epoch": 1718400000,
+      "current_epoch":  1718403800,
+      "completed_steps": ["PE-01","PE-02","PE-03","PE-04","PE-05","PE-06","PE-07"],
+      "context": {"sender": "attacker@evil.xyz", "users_clicked": 2}
+    },
+    {
+      "incident_id": "INC-2024-0304",
+      "playbook_type": "ransomware_response",
+      "detected_epoch": 1718400000,
+      "current_epoch":  1718400300,
+      "completed_steps": [],
+      "context": {"host": "FILE-SERVER"}
+    }
+  ]
+}

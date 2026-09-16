@@ -1,5 +1,5 @@
 # Sigma Rule Library
-## 10 Production-Ready Vendor-Neutral Detection Rules | MITRE ATT&CK Mapped
+## 10 Lab Validated Vendor Neutral Detection Rules | MITRE ATT&CK Mapped
 ### By Oladapo Damilola (Wizardskull) | SOC Analyst | github.com/demonchant
 
 ---

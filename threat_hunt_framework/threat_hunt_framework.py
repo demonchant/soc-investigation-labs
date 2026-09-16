@@ -1,7 +1,7 @@
 """
 Threat Hunt Framework — Hypothesis-Driven Hunt Orchestrator
 ============================================================
-A production-grade threat hunting framework that operationalizes the
+A production structured demonstration threat hunting framework that operationalizes the
 PEAK (Prepare, Execute, Act, Knowledge) hunting methodology.
 
 Runs structured hunt hypotheses against log data, tracks evidence,
@@ -565,5 +565,14 @@ def main():
     print(f"  📄 Full hunt report saved → {output_path}")
 
 
+def _configure_console():
+    """Keep Unicode reports readable on Windows and redirected terminals."""
+    import sys
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
+
 if __name__ == "__main__":
+    _configure_console()
     main()

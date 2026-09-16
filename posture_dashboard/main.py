@@ -12,10 +12,21 @@ def run(data_file="data/posture_data.json", output=None):
     print()
     print(ReportGenerator().generate(findings, data))
     if output:
-        os.makedirs(os.path.dirname(output), exist_ok=True)
+        output_dir = os.path.dirname(output)
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
         with open(output, "w") as f: json.dump(findings, f, indent=4)
 
+def _configure_console():
+    """Keep Unicode reports readable on Windows and redirected terminals."""
+    import sys
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
+
 if __name__ == "__main__":
+    _configure_console()
     ap = argparse.ArgumentParser()
     ap.add_argument("--data",   default="data/posture_data.json")
     ap.add_argument("--output", default="reports/posture_report.json")

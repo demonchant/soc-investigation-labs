@@ -14,6 +14,7 @@ MITRE ATT&CK: Full framework coverage via rule gap analysis.
 Author: Oladapo Damilola (Wizardskull)
 """
 
+import ast
 import json
 import re
 import sys
@@ -178,6 +179,32 @@ MITRE_CRITICAL_TECHNIQUES = {
 
 
 # ── Rule Engine ───────────────────────────────────────────────────────────────
+def evaluate_boolean_condition(condition: str, results: dict) -> bool:
+    """Evaluate selection names joined by and/or/not without using eval."""
+    if not condition or not condition.strip():
+        raise ValueError("condition cannot be empty")
+    tree = ast.parse(condition, mode="eval")
+
+    def visit(node):
+        if isinstance(node, ast.Expression):
+            return visit(node.body)
+        if isinstance(node, ast.Name):
+            if node.id not in results:
+                raise ValueError(f"unknown selection '{node.id}'")
+            return bool(results[node.id])
+        if isinstance(node, ast.Constant) and isinstance(node.value, bool):
+            return node.value
+        if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
+            return not visit(node.operand)
+        if isinstance(node, ast.BoolOp) and isinstance(node.op, ast.And):
+            return all(visit(value) for value in node.values)
+        if isinstance(node, ast.BoolOp) and isinstance(node.op, ast.Or):
+            return any(visit(value) for value in node.values)
+        raise ValueError("unsupported condition expression")
+
+    return visit(tree)
+
+
 def evaluate_condition(detection: dict, condition: str, event: dict) -> bool:
     """
     Simplified Sigma condition evaluator.
@@ -212,14 +239,7 @@ def evaluate_condition(detection: dict, condition: str, event: dict) -> bool:
                 break
         results[sel_name] = match
 
-    # Evaluate condition expression
-    cond = condition.lower()
-    for sel_name, result in results.items():
-        cond = cond.replace(sel_name.lower(), str(result))
-    try:
-        return eval(cond)
-    except Exception:
-        return any(results.values())
+    return evaluate_boolean_condition(condition, results)
 
 
 def test_rule_against_corpus(rule: dict, test_cases: list) -> dict:
@@ -413,5 +433,14 @@ def main():
     print(f"  📄 Report saved → {out_path}")
 
 
+def _configure_console():
+    """Keep Unicode reports readable on Windows and redirected terminals."""
+    import sys
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
+
+
 if __name__ == "__main__":
+    _configure_console()
     main()

@@ -1,6 +1,6 @@
 # 🏹 Threat Hunt Framework — Hypothesis-Driven Hunt Orchestrator
 
-> A production-grade threat hunting framework implementing the PEAK methodology (Prepare, Execute, Act, Knowledge). Runs structured hunt hypotheses, tracks evidence confidence, and generates executive hunt reports.
+> A production structured demonstration threat hunting framework implementing the PEAK methodology (Prepare, Execute, Act, Knowledge). Runs structured hunt hypotheses, tracks evidence confidence, and generates executive hunt reports.
 
 ## Why This Matters
 
